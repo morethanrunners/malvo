@@ -113,18 +113,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //para colocar la distancia obligtoria, usa exit para terminar con el codigo, almacena el error como variable para poder mostrarla en otra parte
 if (empty($_POST["distancia"])){
     echo $distanciaErr = "distancia es obligatorio";
-    exit;
 }
 		//chequea que la variable tiempo no este vacia
-		//$tiempo = $_POST["segundos"] + ($_POST["minutos"] * 60) + ($_POST["horas"] * 60 * 60);
-		//if($tiempo == 0)
+		$tiempo = $_POST["segundos"] + ($_POST["minutos"] * 60) + ($_POST["horas"] * 60 * 60);
+		if($tiempo == 0 || $tiempo = "" || empty($tiempo)){
+			echo "no colocaste ninguna duracion.";
+		}
     //si el campo 'ppm' esta vacio le asigna el valor NULL. todos los demas valores son los del formulario
 elseif(empty($_POST["ppm"])){
     $ppm = "NULL";
     $fecha = $_POST["fecha"];
     $distanciakm = $_POST["distancia"];
         $distancia = $distanciakm * 1000;
-    $tiempo = $_POST["segundos"] + ($_POST["minutos"] * 60);
     $ritmo = $tiempo * 1000 / $distancia;
 	if (empty($_POST["entrenamiento"])){
 		$entr;
