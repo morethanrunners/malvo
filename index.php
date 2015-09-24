@@ -81,7 +81,7 @@
         
 <!--        Boton Submit-->
           <div class="align-center">
-            <input type="submit" value="Submit" class="btn btn-default espacio25">
+            <input type="submit" name="running_log" value="Submit" class="btn btn-default espacio25">
           </div>
         
       </form>
@@ -104,8 +104,17 @@ if (!$conn) {
 }
 		//asegura el codigo se ejecute solo cuando este el POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  
-    //prueba la fecha
+	
+	//se agrego un nombre al imput del formulario 1 para poder verificar cual de los formularios se est utilizando. Este codigo verifica que se este usando el formulario correspondiente.
+	if (isset($_POST["running_log"])) {
+		
+		//chequea que la variable tiempo no este vacia
+		$tiempo = $_POST["segundos"] + ($_POST["minutos"] * 60) + ($_POST["horas"] * 60 * 60);
+		if($tiempo == 0 || $tiempo = "" || empty($tiempo)){
+			echo "no colocaste ninguna duracion.";
+		}
+		
+		  //prueba la fecha
   $testdate = $_POST["fecha"];
   $test_arr = explode('/', $testdate);
   if (checkdate($test_arr[0], $test_arr[1], $test_arr[2])){
@@ -114,20 +123,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 if (empty($_POST["distancia"])){
     echo $distanciaErr = "distancia es obligatorio";
 }
-		//chequea que la variable tiempo no este vacia
-		$tiempo = $_POST["segundos"] + ($_POST["minutos"] * 60) + ($_POST["horas"] * 60 * 60);
-		if($tiempo == 0 || $tiempo = "" || empty($tiempo)){
-			echo "no colocaste ninguna duracion.";
-		}
-    //si el campo 'ppm' esta vacio le asigna el valor NULL. todos los demas valores son los del formulario
+		
+		//si el campo 'ppm' esta vacio le asigna el valor NULL. todos los demas valores son los del formulario
 elseif(empty($_POST["ppm"])){
     $ppm = "NULL";
     $fecha = $_POST["fecha"];
     $distanciakm = $_POST["distancia"];
         $distancia = $distanciakm * 1000;
+		$tiempo = $_POST["segundos"] + ($_POST["minutos"] * 60) + ($_POST["horas"] * 60 * 60);
     $ritmo = $tiempo * 1000 / $distancia;
 	if (empty($_POST["entrenamiento"])){
-		$entr;
+		$entr = "NULL";
 	}
 	else {
 		$input_entr = $_POST["entrenamiento"];
@@ -139,7 +145,7 @@ else{
   $fecha = $_POST["fecha"];
   $distanciakm = $_POST["distancia"];
     $distancia = $distanciakm * 1000;
-  $tiempo = $_POST["segundos"] + ($_POST["minutos"] * 60);
+	$tiempo = $_POST["segundos"] + ($_POST["minutos"] * 60) + ($_POST["horas"] * 60 * 60);
   $ritmo = $tiempo * 1000 / $distancia;
   $ppm = $_POST["ppm"];
 	if (empty($_POST["entrenamiento"])){
@@ -167,6 +173,7 @@ if(mysqli_query($conn, $input)){
   }
 }
 mysqli_close($conn);
+	}
 
 ?>
 <!--  Espacio para la tabla y gráfica-->
@@ -282,13 +289,7 @@ if( $num_rows > 0){
       </div>
 			<div class="training_plan">
 	<?php
-		//Pone la timezone predeterminada.
-date_default_timezone_set ('UTC');
 
-		//Conecta con el servidor
-$server = "localhost";
-$root = "root";
-$password = "goldensun2591";
 $database = "Runlog";
 $conn = mysqli_connect($server, $root, $password, $database);
 
@@ -309,7 +310,7 @@ mysqli_close($conn);
 			<input type="text" name="tipo_train" required><br>
 			Comments<br>
 			<input type="text" name="coment_train" maxlength="140"><br>
-			<input type="submit">
+			<input type="submit" name="training_program">
 				</form>
 			</div>
 			<div class="plan">
@@ -360,7 +361,7 @@ if (!$conn) {
 }
 //se ejeuta solo si el metodo del servidor es POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	
+	if (isset($_POST["training_program"])) {
 	//si la fecha NO esta vacia verifica el formato
 	if(!empty($_POST["fecha_train"])) {
 		$testdate_train = $_POST["fecha_train"];
@@ -424,14 +425,14 @@ if(mysqli_query($conn, $input_train)) {
 else {
 	echo "registro fallo";
 }
-}
+}	
+	}
 
 $select_train = "SELECT * FROM trainplan ORDER BY fecha DESC";
 $query_select_train = mysqli_query($conn, $select_train);
 $train_rows = mysqli_num_rows($query_select_train);
 echo $train_rows;
 mysqli_close($conn);
-
 
 			?>
 </div>
