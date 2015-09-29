@@ -1,0 +1,75 @@
+<?php
+date_default_timezone_set ('UTC');
+
+		//Conecta con el servidor
+$server = "localhost";
+$root = "root";
+$password = "goldensun2591";
+$database = "Runlog";
+$conn = mysqli_connect($server, $root, $password, $database);
+
+$select = "SELECT * FROM running ORDER BY fecha DESC, id DESC LIMIT 7";
+$query_select = mysqli_query($conn, $select);
+
+  //cuenta el numero de rows
+$num_rows = mysqli_num_rows($query_select);
+	
+//si existen rows
+if ($num_rows > 0){
+	while ($row = mysqli_fetch_assoc($query_select)){
+    
+		//transforma las variables tiempo y ritmo a minutos y segundos 
+		$tiempo = $row["tiempo"];
+		$segundos = $tiempo % 60;
+		$minutos = ($tiempo / 60) % 60;
+		$horas = floor(($tiempo / 60) / 60);
+			if ($segundos < 10) {
+				$segundos = sprintf('%02d', $segundos);
+			}
+			if ($minutos < 10) {
+				$minutos = sprintf('%02d', $minutos);
+			}
+		$ritmo = $row["ritmo"];
+		$ritmosegundos = $ritmo % 60;
+		$ritmominutos = ($ritmo / 60) % 60;
+		$ritmohoras = floor(($ritmo / 60) / 60);
+			if ($ritmosegundos < 10) {
+				$ritmosegundos = sprintf('%02d', $ritmosegundos);
+			}
+			if ($ritmominutos < 10) {
+				$ritmominutos = sprintf('%02d', $ritmominutos);
+			}
+		
+		//transforma la distancia de m a km para mostrarla en la tabala la guarda en un avariable
+     $distancia_km = $row["distancia"] / 1000;
+		
+		//convierte la fecha de mysql a "m/d/y" y la almacena la fecha en una variable
+    $strtotime = strtotime($row["fecha"]);
+		$fechadisplayformat = date ("m/d/y", $strtotime);
+		
+    //muestra la fecha y distancia
+    print "<tr><td>" .$fechadisplayformat. "</td><td>" .$distancia_km. " km";
+		//si segundos es < 10 agrega un 0 y la muestra si segundos > 10 lo deja asi y lo muestra
+		
+		
+    if ($horas < 1){
+      print "</td><td>".$minutos.":".$segundos. "</td><td>";
+    }
+    else {
+      print "</td><td>".$horas.":".$minutos.":".$segundos."</td><td>";
+    }
+  
+    //si rito en segundos es < 10 acomoda el formato para mostrarlo
+    if($ritmohoras < 1){
+    print $ritmominutos.":".$ritmosegundos;
+    }
+    else {
+      print $ritmohoras.":".$ritmominutos.":".$ritmosegundos;
+    }
+    
+    //muestra las ppm
+    print " /km</td><td>" .$row["ppm"]. "</td><td>" .$row["entr"]. "</td></tr>";
+}
+	
+ }
+?>

@@ -121,7 +121,17 @@ else {
 $select_train = "SELECT * FROM trainplan ORDER BY fecha DESC";
 $query_select_train = mysqli_query($conn, $select_train);
 $train_rows = mysqli_num_rows($query_select_train);
-echo $train_rows;
+if ($train_rows > 0) {
+	while ($row = mysqli_fetch_assoc($query_select_train)) {
+		$fecha = $row["fecha"];
+		$distancia = $row["distancia"] / 1000;
+		$tipo_train = $row["tipo"];
+		$coment_train = $row["comentario"];
+		
+		print "La fecha es: ".$fecha."<br>La distancia es: ".$distancia."<br>El tipo de entreamiento es: ".$tipo_train."<br>el comentario es: ".$coment_train;
+	}
+	
+} 
 mysqli_close($conn);
 
 ?>

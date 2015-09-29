@@ -5,7 +5,7 @@ function ajax_post(){
     // Create our XMLHttpRequest object
     var hr = new XMLHttpRequest();
     // Create some variables we need to send to our PHP file
-    var url = "my_parse_file.php";
+    var url = "http://localhost/~erwinhenriquezviejo/malvo/tutorials/my_parse_file.php";
     var fn = document.getElementById("first_name").value;
     var ln = document.getElementById("last_name").value;
     var vars = "firstname="+fn+"&lastname="+ln;
@@ -22,6 +22,7 @@ function ajax_post(){
     // Send the data to PHP now... and wait for response to update the status div
     hr.send(vars); // Actually execute the request
     document.getElementById("status").innerHTML = "processing...";
+	document.getElementById("test").innerHTML = vars;
 }
 </script>
 </head>
@@ -31,5 +32,6 @@ First Name: <input id="first_name" name="first_name" type="text">  <br><br>
 Last Name: <input id="last_name" name="last_name" type="text"> <br><br>
 <input name="myBtn" type="submit" value="Submit Data" onclick="ajax_post();"> <br><br>
 <div id="status"></div>
+	<div id="test"></div>
 </body>
 </html>

@@ -10,12 +10,12 @@
   <link rel="stylesheet" href="angular-chart.js/angular-chart.min.css">
 </head>
   
-<body ng-app="app">
+<body ng-app="app" onload="logTable();">
 <!--  Jumbotron-->
   <div class="jumbotron">
     <div class="container">
 <!--      Titulo principal-->
-      <h1 class="lead">Malvo. <small>A Training Log for runners.</small></h1>
+      <h1 class="lead">RunLg. <small>A Training Log for runners.</small></h1>
 			</div>
   </div>
 <!-- Espacio para los forms -->
@@ -23,15 +23,16 @@
     
     <div class="container">
       
-      <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+     
 <!--        Row para los forms-->
         <div class="row">
           
+<!--				Fecha-->
           <div class="col-md-2">
             <h4>Date</h4>
             <div class="input-group">
               <span class="input-group-addon custom-padding"><span class="glyphicon glyphicon-calendar"></span></span>
-              <input type="text" name="fecha" class="form-control" placeholder="mm/dd/yy" aria-describedby="date" required>
+							<input type="text" name="fecha" id="fecha" class="form-control" placeholder="mm/dd/yy" aria-describedby="date" required>
             </div>
           
           </div>
@@ -41,8 +42,7 @@
             <h4>Distance</h4>
             <div class="input-group">
               <span class="input-group-addon custom-padding"><span class="glyphicon glyphicon-road"></span></span>
-    
-    <input type="number" name="distancia" step="0.1" class="form-control" placeholder="in Km" aria-describedby="dist" required>
+							<input type="number" id="distancia" name="distancia" step="0.1" class="form-control" placeholder="in Km" aria-describedby="dist" required>
             </div>
           </div>
           
@@ -51,11 +51,11 @@
             <h4>Time</h4>
             <div class="input-group">
               <span class="input-group-addon custom-padding"><span class="glyphicon glyphicon-time"></span></span>
-              <input type="text" name="horas" class="form-control" placeholder="Hrs" aria-describedby="dist">
+              <input type="text" id="horas" name="horas" class="form-control" placeholder="Hrs" aria-describedby="dist">
     <span class="input-group-addon timeSpace" id="time">:</span>
-    <input type="text" name="minutos" class="form-control" placeholder="Min" aria-describedby="dist">
+    <input type="text" id="minutos" name="minutos" class="form-control" placeholder="Min" aria-describedby="dist">
               <span class="input-group-addon timeSpace" id="time">:</span>
-              <input type="text" name="segundos" class="form-control" placeholder="Sec">
+              <input type="text" id="segundos" name="segundos" class="form-control" placeholder="Sec">
             </div>
             
           </div>
@@ -63,28 +63,24 @@
 <!--          PPM-->
           <div class="col-md-2">
             <h4>BPM</h4>
-            <div class="input-group">
-    <span class="input-group-addon custom-padding" id="ppm"><span class="glyphicon glyphicon-heart"></span></span>
-    <input type="text" name="ppm" class="form-control" placeholder="BPM" aria-describedby="dist">
+            <div class="input-group"><span class="input-group-addon custom-padding"><span class="glyphicon glyphicon-heart"></span></span>
+							<input type="text" id="ppm" name="ppm" class="form-control" placeholder="BPM" aria-describedby="dist">
             </div>
           </div>
 <!--          Tipo-->
           
           <div class="col-md-2">
             <h4>Type of Training</h4>
-            <div class="input-group">
-    <span class="input-group-addon custom-padding" id="pace"><span class="glyphicon glyphicon-flag"></span></span>
-    <input type="text" name="entrenamiento" class="form-control" placeholder="Type" aria-describedby="dist">
+            <div class="input-group"><span class="input-group-addon custom-padding" id="pace"><span class="glyphicon glyphicon-flag"></span></span>
+							<input type="text" id="entrenamiento" name="entrenamiento" class="form-control" placeholder="Type" aria-describedby="dist">
             </div>
           </div>
         </div>
         
 <!--        Boton Submit-->
           <div class="align-center">
-            <input type="submit" name="running_log" value="Submit" class="btn btn-default espacio25">
+            <input type="submit" name="running_log" value="Submit" class="btn btn-default espacio25" onclick="newLog();logTable();">
           </div>
-        
-      </form>
     </div>
   </div>
 
@@ -96,6 +92,8 @@
         
 <!--        Tabla en 6 col medianas-->
         <div class="col-md-6">
+					<div id="runlog"></div>
+					<div id="vars"></div>
           <table class="table table-hover">
             <thead>
               <tr>
@@ -109,10 +107,8 @@
                 <th>Type <span class="caret"></span></th>
               </tr>
             </thead>
-            <tbody>
-              <?php
-include 'php/runlogtable.php';
-							?>
+            <tbody id="logtable">
+              
             </tbody>
           </table>
           
@@ -177,6 +173,6 @@ include 'php/trainplantable.php';
   <script src="angular-chart.js/angular-chart.min.js"></script>
   <script src="js/app2.js"></script>
   <script src="js/functions.js"></script>
-  
+	<script src="js/runlog.js"></script>
 </body>
 </html>
