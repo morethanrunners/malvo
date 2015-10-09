@@ -52,14 +52,17 @@ if(!empty($fecha)){
 		}
 		else {
 			echo "tiempo es obligatorio";
+			exit;
 		}
 	}
 	else {
 		echo "fecha en formato incorrecto";
+		exit;
 	} 
 }
 else{
 	echo "fecha es obligatorio";
+	exit;
 }
 	
 
@@ -68,12 +71,15 @@ else{
 $input = "INSERT INTO runninglog (run_id, fecha, distancia, tiempo, ritmo, ppm, entr)
 VALUES (NULL, STR_TO_DATE('$fecha', '%m/%d/%Y'), $distancia, $tiempo, $ritmo, $ppm, $entr)";
 
-if(mysqli_query($conn, $input))
-    echo "<br>registro con exito";
+if(mysqli_query($conn, $input)){
+	echo "<br>registro con exito";
+	exit;
+}
 
-    else
-        echo "<br>registro fallo";
-  
+else {
+	echo "<br>registro fallo";
+	exit;
+}
 
 
 ?>
