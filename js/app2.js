@@ -5,7 +5,7 @@ app.controller("BarCtrl", function ($scope) {
   'use strict';
   $scope.labels = ['1', '2', '3', '4', '5', '6', '7'];
   $scope.series = ['Race distances (Km)'];
-
+	
   $scope.data = [
     [65, 59, 80, 81, 56, 55, 40]
     

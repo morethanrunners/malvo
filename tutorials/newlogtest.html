@@ -1,0 +1,32 @@
+<html>
+	<head>
+		
+<!--		carga el js en el HTML-->
+		<script src="http://localhost/~erwinhenriquezviejo/malvo/tutorials/runlog_tutorial.js"></script>
+	</head>
+	
+<!--		onload ejecuta la funcion cuando se carga la pagina-->
+	<body onload="logTable();">
+		
+		<!--NOTA IMPORTANTE
+
+EN ESTE FORMULARIO ESTA FUNCIONANDO SIN LA ETIQUETA DE <form> ME DA UN ERROR CUANDO ESTA ETIQUETA SE INCLUYE
+
+-->
+		
+			Fecha<br>
+		<input type="text" id="fecha" name="fecha"><br>
+			Distancia<br>
+			<input type="text" id="distancia" name="distancia"><br>
+			Tiempo<br>
+			<input type="text" id="tiempo" name="tiempo"><br>
+		
+<!--		al hacer el submit ejecuta las 2 funciones y se actualiza la tabla autamaticamente-->
+	<input type="submit" onclick="newLog();logTable();">
+		
+		<!-- div para que se muestre el la info que sale de los php-->
+		<div id="runlog"></div>
+		<div id="logtable"></div>
+		
+	</body>
+</html>
