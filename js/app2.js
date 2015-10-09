@@ -7,7 +7,7 @@ app.controller("BarCtrl", function ($scope) {
   $scope.series = ['Race distances (Km)'];
 	
   $scope.data = [
-    [65, 59, 80, 81, 56, 55, 40]
+    [8, 10, 3, 0, 10]
     
   ];
 });
