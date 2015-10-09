@@ -10,7 +10,7 @@
 *
 */
 
-function newLog(){
+function newLog() {
 	var hr = new XMLHttpRequest();
 				
 	var url = "http://localhost/~erwinhenriquezviejo/malvo/php/newlog.php";
@@ -26,9 +26,8 @@ function newLog(){
 	hr.open("POST", url, true);
 	
 	hr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	
- hr.onreadystatechange = function() {
-	    if(hr.readyState == 4 && hr.status == 200) {
+	hr.onreadystatechange = function() {
+	    if(hr.readyState === 4 && hr.status === 200) {
 		    var return_data = hr.responseText;
 			document.getElementById("runlog").innerHTML = return_data;
 	    }
@@ -43,10 +42,10 @@ function logTable(){
 	hr.open("POST", url, true);
 	hr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
  hr.onreadystatechange = function() {
-	    if(hr.readyState == 4 && hr.status == 200) {
-		    var return_data = hr.responseText;
+	  if (hr.readyState === 4 && hr.status === 200) {
+			var return_data = hr.responseText;
 			document.getElementById("logtable").innerHTML = return_data;
-	    }
-    }
+		}
+  }
 	hr.send();
 }

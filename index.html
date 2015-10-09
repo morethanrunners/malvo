@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="angular-chart.js/angular-chart.min.css">
 </head>
   
-<body ng-app="app" onload="logTable();">
+<body ng-app="app" onload="logTable();getData();">
 <!--  Jumbotron-->
   <div class="jumbotron">
     <div class="container">
@@ -23,7 +23,7 @@
     
     <div class="container">
       
-     
+     <form>
 <!--        Row para los forms-->
         <div class="row">
           
@@ -81,6 +81,7 @@
           <div class="align-center">
             <input type="submit" name="running_log" value="Submit" class="btn btn-default espacio25" onclick="newLog();logTable();">
           </div>
+			 </form>
     </div>
   </div>
 
@@ -93,7 +94,6 @@
 <!--        Tabla en 6 col medianas-->
         <div class="col-md-6">
 					<div id="runlog"></div>
-					<div id="vars"></div>
           <table class="table table-hover">
             <thead>
               <tr>
@@ -108,7 +108,7 @@
               </tr>
             </thead>
             <tbody id="logtable">
-              
+              <!-- Aqui se genera la tabla con el .js y el .php-->
             </tbody>
           </table>
           
@@ -142,7 +142,7 @@
           
         </div>
       </div>
-			<div class="training_plan">
+	<!--		<div class="training_plan">
 			<div class="plan_input">
 				<h2>Training program</h2>
 				<form action="<?php htmlspecialchars($_SERVER["PHP_SELF"]);?> "method="post">
@@ -157,13 +157,14 @@
 			<input type="submit" name="training_program">
 				</form>
 			</div>
+				<div id="data2"></div>
 			<div class="plan">
 				
 			<?php
 include 'php/trainplantable.php';
 			?>
 </div>
-	</div>
+	</div>-->
     </div>
   </div>
 	

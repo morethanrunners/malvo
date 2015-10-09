@@ -8,7 +8,12 @@ $password = "goldensun2591";
 $database = "Runlog";
 $conn = mysqli_connect($server, $root, $password, $database);
 
-$select = "SELECT * FROM running ORDER BY fecha DESC, id DESC LIMIT 7";
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+$select = "SELECT * FROM runninglog ORDER BY fecha DESC, run_id DESC LIMIT 7";
 $query_select = mysqli_query($conn, $select);
 
   //cuenta el numero de rows
@@ -39,6 +44,8 @@ if ($num_rows > 0){
 			if ($ritmominutos < 10) {
 				$ritmominutos = sprintf('%02d', $ritmominutos);
 			}
+		$ppm = $row["ppm"];
+		$entr = $row["entr"];
 		
 		//transforma la distancia de m a km para mostrarla en la tabala la guarda en un avariable
      $distancia_km = $row["distancia"] / 1000;
@@ -48,7 +55,7 @@ if ($num_rows > 0){
 		$fechadisplayformat = date ("m/d/y", $strtotime);
 		
     //muestra la fecha y distancia
-    print "<tr><td>" .$fechadisplayformat. "</td><td>" .$distancia_km. " km";
+    print '<tr><td id="fecha">' .$fechadisplayformat. '</td><td id="distancia">' .$distancia_km. " km";
 		//si segundos es < 10 agrega un 0 y la muestra si segundos > 10 lo deja asi y lo muestra
 		
 		

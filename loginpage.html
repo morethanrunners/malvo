@@ -1,0 +1,38 @@
+<html>
+	<div id="loginform">
+		<h2>Log In:</h2>
+		Usuario:
+		<input id="user" type="text" />
+		<br><br>
+		Clave: 
+		<input id="password" type="password" />
+		<br><br>
+		<input type="submit" value="Log In" onclick="logIn();">
+		<div id="login"></div>
+	</div><br />
+	
+	<br><br>
+	<div id="signup">
+		<h2>Sign Up</h2>
+		Nombre:
+		<input id="firstname" type="text" placeholder="First Name" /> <input id="lastname" type="text" placeholder="Last Name" /><br><br>
+		Usuario:
+		<input id="user_signup" type="text" placeholder="Must be alphanumeric" maxlength="16" /><br><br>
+		Correo:
+		<input id="email_signup" type="text" placeholder="example@example.com" /><br><br>
+		Contrasena:
+		<input id="password_signup" type="password" placeholder="Al menos 8 caracteres" /><br><br>
+		Confirmar contrasena:
+		<input id="password_signup_confirm" type="password" /><br><br>
+		<input type="submit" value="Sign Up" onclick="signUp();">
+		<div id="result"></div>
+	</div>
+	<div id="passwordrecover">
+		<h2>Recuperar contrasena</h2>
+		<p>Si has olvidado tu contrasena coloca los iguientes datos para poder modificar tu datos:</p>
+
+		
+	</div>
+	<script src="js/userlogin.js"></script>
+	
+</html>

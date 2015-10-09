@@ -45,6 +45,9 @@ if(!empty($fecha)){
 			if(empty($entr)) {
 				$entr = 'NULL';
 			}
+			else {
+				$entr = "'$entr'";
+			}
 
 		}
 		else {
@@ -62,7 +65,7 @@ else{
 
     
     //codigo para insertar las variables a la base de datos. el campo de 'id' siempre se pone NULL porque esta en A_I. la fecha se cambia del formato de input al formato de mysql. si el formulario los permite los valores vacios se agregan como NULL.
-$input = "INSERT INTO running (id, fecha, distancia, tiempo, ritmo, ppm, entr)
+$input = "INSERT INTO runninglog (run_id, fecha, distancia, tiempo, ritmo, ppm, entr)
 VALUES (NULL, STR_TO_DATE('$fecha', '%m/%d/%Y'), $distancia, $tiempo, $ritmo, $ppm, $entr)";
 
 if(mysqli_query($conn, $input))

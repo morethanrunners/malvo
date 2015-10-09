@@ -1,5 +1,17 @@
 <?php
-//Pone la timezone predeterminada.
+
+/*
+*
+*
+*
+IMPORTANTE
+actualmente este archivo no se esta utilizando es solo un archivo de control para la logica de PHP de la tabla del Running Log.
+*
+*
+*
+*
+*/
+
 date_default_timezone_set ('UTC');
 
 		//Conecta con el servidor
