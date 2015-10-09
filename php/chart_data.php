@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
 	<head>
-        <meta charset="UTF-8">
         <title> Proyecto Running Log 1</title>
     <body>
         <?php
 		//Pone la timezone predeterminada.
-date_default_timezone_set ('UTC');
 
 		//Conecta con el servidor
 $server = "localhost";
@@ -19,11 +17,19 @@ if (!$conn) {
     die("Connection failed: " . $conn->connect_error);
 }
 	
-$sql = "SELECT `distancia` FROM `running` LIMIT 7";
+$sql = "SELECT * FROM `running` ORDER BY `fecha` DESC LIMIT 7";
   $query_select = mysqli_query($conn, $sql);
-while ($row = mysqli_fetch_assoc($query_select)){
-	echo $row["distancia"]."<br>";
+
+  $query_select = mysqli_query($conn, $sql);
+while($row = mysqli_fetch_array($query_select, MYSQL_ASSOC)) {
+	$array[] = $row;
 }
+$json_array = json_encode($array);
+echo $json_array;
+
+/*while ($row = mysqli_fetch_assoc($query_select)){
+	echo $row["distancia"]."<br>";
+}*/
 
 mysqli_close($conn);
 				?>
