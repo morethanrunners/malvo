@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Signin Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+		<!-- Custom CSS-->
+		<link href="css/style.css" rel="stylesheet">
+	</head>
+
+  <body>
+
+    <div class="container">
+			<row>
+				<div class="col-12 text-center">
+					<h1>RunLg<br><small>Empieza a llevar rigistro de tus entrenamientos</small></h1>
+				</div>
+			</row>
+			<row>
+				<div class="col-md-1"></div>
+				<div class="col-md-4 text-center">
+					<form id="loginForm" action="" method="post" onsubmit="logIn(); return false" class="form-signin">
+					<h3>Entrar</h3>
+					<label for="loginUser" class="sr-only">Username</label>
+					<input type="text" id="loginUser" class="form-control" placeholder="Nombre de usuario" required>
+					<label for="loginPass" class="sr-only">Password</label>
+					<input type="password" id="loginPass" class="form-control" placeholder="Contrasena" required>
+						<br>
+						<div id="login"></div>
+						<br>
+						<input type="submit" value="Log In">
+					</form>
+					
+				</div>
+				<div class="col-md-2"></div>
+				<div class="col-md-4 text-center">
+					
+					<form id="signupForm" action="" method="post" onsubmit="signUp(); return false" class="form-signup">
+					<h3>Registrarse</h3>
+					<label for="signupName" class="sr-only">Nombre</label>
+					<input type="text" id="signupName" class="form-control" placeholder="Nombre" required >
+					<label for="signupLastName" class="sr-only">Apellido</label>
+					<input type="text" id="signupLastName" class="form-control" placeholder="Apellido" required>
+					<label for="signupUser" class="sr-only">Username</label>
+					<input type="text" id="signupUser" placeholder="Nombre de Usuario" class="form-control">
+					<label for="signupEmail" class="sr-only">Email</label>
+					<input type="email" id="signupEmail" class="form-control" placeholder="Email" required>
+						<label for="signupPass" class="sr-only">Password</label>
+					<input type="password" id="signupPass" placeholder="Contrasena" class="form-control" required>
+						<label for="signupPass2" class="sr-only">Password</label>
+					<input type="password" id="signupPass2" placeholder="Confirma tu contrasena" class="form-control" required>
+						<br>
+						<div id="result"></div>
+						<br>
+						<input type="submit" value="Log In">
+					</form>
+					
+				</div>
+				<div class="col-md-1"></div>
+			</row>
+      
+
+    </div> <!-- /container -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+		<script src="js/login.js"></script>
+  </body>
+</html>
