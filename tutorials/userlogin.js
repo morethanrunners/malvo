@@ -1,6 +1,6 @@
 function logIn() {
-			var hr = new XMLHttpRequest;
-			var url = "http://localhost/~erwinhenriquezviejo/malvo/php/login.php";
+			var hr = new XMLHttpRequest() ;
+			var url = "http://localhost/~erwinhenriquezviejo/malvo/tutorials/login.php";
 			var user = document.getElementById("user").value;
 			var password = document.getElementById("password").value;
 			var vars = "user="+user+"&password="+password;
@@ -15,9 +15,10 @@ function logIn() {
     }
 	hr.send(vars);
 		}
+
 		function signUp() {
-			var hr = new XMLHttpRequest;
-			var url = "http://localhost/~erwinhenriquezviejo/malvo/php/signup.php";
+			var hr = new XMLHttpRequest() ;
+			var url = "http://localhost/~erwinhenriquezviejo/malvo/tutorials/signup.php";
 			var user = document.getElementById("user_signup").value;
 			var password = document.getElementById("password_signup").value;
 			var password_confirm = document.getElementById("password_signup_confirm").value;

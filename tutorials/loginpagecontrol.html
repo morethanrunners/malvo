@@ -1,4 +1,10 @@
+<!DOCTYPE html>
 <html>
+<head>
+	<title>Malvo. A Training Log for runners.</title>
+	<meta charset="utf-8">
+</head>
+	<form action="" method="post" onsubmit="logIn(); return false">
 	<div id="loginform">
 		<h2>Log In:</h2>
 		Usuario:
@@ -7,9 +13,11 @@
 		Clave: 
 		<input id="password" type="password" />
 		<br><br>
-		<input type="submit" value="Log In" onclick="logIn();">
+		<input type="submit" value="Log In">
 		<div id="login"></div>
-	</div><br />
+<br />
+			</div>
+	</form>
 	
 	<br><br>
 	<div id="signup">
@@ -33,6 +41,6 @@
 
 		
 	</div>
-	<script src="js/userlogin.js"></script>
+	<script src="userlogin.js"></script>
 	
 </html>
