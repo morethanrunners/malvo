@@ -1,0 +1,47 @@
+.features{
+  text-align: center;
+}
+
+.calling{
+  text-align: center;
+  padding: 50px 0px;
+}
+
+
+.featurette-divider {
+  margin: 25px 0px;
+}
+
+.main{
+  padding-top: 150px;
+  padding-bottom: 150px;
+}
+
+.sign-in{
+  color: azure !important;
+}
+
+.texto{
+  font-size: 1.2em !important;
+}
+
+.navbar-brand {
+  font-size: 1.5em;
+}
+
+.navbar{
+  padding: 15px 0px;
+}
+
+.nav>li>a{
+  padding: 15px 20px;
+}
+
+.fondo1{
+  background: rgba(255, 137, 0, 0.67);
+}
+
+
+.espacio25 {
+  margin: 25px 0px;
+}
