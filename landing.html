@@ -6,10 +6,10 @@
     <!--  Hojas de estilo-->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/landing-style.css">
-    
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans|Droid+Sans' rel='stylesheet' type='text/css'>    
   </head>
   <body>
-    
+<!--    Navbar-->
     <nav class="navbar navbar-inverse navbar-fixed-top texto">
       <div class="container">
         <div class="navbar-header">
@@ -25,6 +25,7 @@
           
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">Home</a></li>
+            <li><a href="#">Blog</a></li>
             
             <li><a href="#" class="sign-in">Sign in</a></li>
             
@@ -33,6 +34,7 @@
       </div>
     </nav>
 
+<!--    Jumbotron-->
     <div class="jumbotron main">
       <div class="container">
         <div class="row">
@@ -48,10 +50,12 @@
       </div>
     </div>
     
+<!--    Gran container para la sección principal-->
+  <div class="container lg-text">
     
-  
-    <div class="welcome">
-      <div class="container">
+<!--  Primer espacio principal-->
+    <div class="welcome main-space">
+      
       <div class="row">
           <div class="col-md-7">
             <h2>¿Por qué llevar un registro?</h2>
@@ -61,28 +65,46 @@
             
           </div>
         </div>
-      </div>
+      
     </div>
     
-    <div class="work">
-      <div class="container">
+<!--    Segundo espacio principal-->
+    <div class="work main-space">
+      
       <div class="row">
+        <div class="col-md-5">
+
+        </div>
+        <div class="col-md-7">
+          <h2>¿Cómo funciona?</h2>
+          <p>Agrega o importa tu entrenamiento. Revisa tu data y compara tu progreso, es así de fácil. Sin complicaciones ni enredos.</p>
+          <p>Revisa tu entrenamiento de manera clara y sencilla, de esta manera puedes preocuparte más por tu récord personal y menos por entender los gráficos, tablas y toda la data.</p>
+        </div>
+
+      </div>
+      
+    </div>
+    
+<!--    Tercer espacio principal-->
+    <div class="more main-space">
+      
+      <div class="row">
+          <div class="col-md-7">
+            <h2>Tercer título llamativo</h2>
+            
+            <p>Aquí mostraremos un párrafo adicional para dar más información sobre las características únicas de la aplicación.</p>
+          </div>
           <div class="col-md-5">
             
           </div>
-          <div class="col-md-7">
-            <h2>¿Cómo funciona?</h2>
-            <p>Agrega o importa tu entrenamiento. Revisa tu data y compara tu progreso, es así de fácil. Sin complicaciones ni enredos.</p>
-            <p>Revisa tu entrenamiento de manera clara y sencilla, de esta manera puedes preocuparte más por tu récord personal y menos por entender los gráficos, tablas y toda la data.</p>
-          </div>
           
         </div>
-      </div>
+      
     </div>
-    
- 
-    
-    <div class="features">
+
+  </div>
+<!--    Features-->
+    <div class="features main-space">
       <div class="container">
       
         <div class="row">
@@ -107,8 +129,7 @@
       </div>
     </div>
     
-    
-    
+<!--    Call to action-->
     <div class="fondo1">
     <div class="calling">
       <div class="container">
@@ -119,15 +140,15 @@
     </div>
     </div>
     
+<!--    Footer-->
     <footer>
       <div class="container">
-        <p class="pull-right">Hecho con</p>
+        <p class="pull-right">Hecho con amor por <a href="https://www.twitter.com/erwinhenriquez" target="_blank">Erwin</a> y <a href="https://www.twitter.com/kkhenriquez" target="_blank">Kevin.</a></p>
         <p>© 2015 RunLg, Inc. · <a href="#">Home</a> · <a href="#">Blog</a></p>
       </div>
     </footer>
     
+    <script src="js/bootstrap.min.js" type="text/javascript"></script>
     
-    
- 
   </body>
 </html>
