@@ -12,7 +12,6 @@
 
 function newLog() {
 	var hr = new XMLHttpRequest();
-				
 	var url = "http://localhost/~erwinhenriquezviejo/malvo/php/newlog.php";
 	var fecha = document.getElementById("fecha").value;
 	var distancia = document.getElementById("distancia").value;
