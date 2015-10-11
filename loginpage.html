@@ -21,56 +21,109 @@
 
     <div class="container">
 			<row>
-				<div class="col-12 text-center">
+				<div class="col-12 text-center header">
 					<h1>RunLg<br><small>Empieza a llevar rigistro de tus entrenamientos</small></h1>
 				</div>
 			</row>
 			<row>
-				<div class="col-md-1"></div>
-				<div class="col-md-4 text-center">
-					<form id="loginForm" action="" method="post" onsubmit="logIn(); return false" class="form-signin">
-					<h3>Entrar</h3>
-					<label for="loginUser" class="sr-only">Username</label>
-					<input type="text" id="loginUser" class="form-control" placeholder="Nombre de usuario" required>
-					<label for="loginPass" class="sr-only">Password</label>
-					<input type="password" id="loginPass" class="form-control" placeholder="Contrasena" required>
-						<br>
-						<div id="login"></div>
-						<br>
-						<input type="submit" value="Log In">
+				<div class="col-md-4"></div>
+				<div class="col-md-4 text-center colorfull">
+					<row>
+					<div class="col-md-6">
+						
+						<button id="loginBtn" class="btn btn-primary" onclick="toggleLtS('loginForm', 'signupForm', 'loginBtn', 'signupBtn');">Entrar</button>
+					</div>
+						
+					<div class="col-md-6">
+						<button id="signupBtn" class="btn btn-default" onclick="toggleStL('signupForm', 'loginForm', 'signupBtn', 'loginBtn');">Registrarse</button>
+					</div>
+						
+					</row>
+					
+					<br><br>
+					
+					<form id="loginForm" action="" method="post" onsubmit="logIn(); return false">
+						<h3>Entrar</h3>
+						<div class="form-group">
+							<label for="loginUser" class="sr-only">Username</label>
+							<input type="text" id="loginUser" class="form-control" placeholder="Nombre de usuario" required>
+						</div>
+						<div class="form-group">
+							<label for="loginPass" class="sr-only">Password</label>
+							<input type="password" id="loginPass" class="form-control" placeholder="Contrasena" required>
+						</div>	
+						<div class="form-group">
+							<div id="login"></div>
+						</div>
+						<div class="form-group">
+							<input type="submit" value="Log In" class="btn btn-default">
+						</div>
 					</form>
-					
-				</div>
-				<div class="col-md-2"></div>
-				<div class="col-md-4 text-center">
-					
-					<form id="signupForm" action="" method="post" onsubmit="signUp(); return false" class="form-signup">
+					<form id="signupForm" action="" method="post" onsubmit="signUp(); return false" class="form-signup" style="display:none">
 					<h3>Registrarse</h3>
-					<label for="signupName" class="sr-only">Nombre</label>
-					<input type="text" id="signupName" class="form-control" placeholder="Nombre" required >
-					<label for="signupLastName" class="sr-only">Apellido</label>
-					<input type="text" id="signupLastName" class="form-control" placeholder="Apellido" required>
-					<label for="signupUser" class="sr-only">Username</label>
-					<input type="text" id="signupUser" placeholder="Nombre de Usuario" class="form-control">
-					<label for="signupEmail" class="sr-only">Email</label>
-					<input type="email" id="signupEmail" class="form-control" placeholder="Email" required>
-						<label for="signupPass" class="sr-only">Password</label>
-					<input type="password" id="signupPass" placeholder="Contrasena" class="form-control" required>
-						<label for="signupPass2" class="sr-only">Password</label>
-					<input type="password" id="signupPass2" placeholder="Confirma tu contrasena" class="form-control" required>
-						<br>
-						<div id="result"></div>
-						<br>
-						<input type="submit" value="Log In">
+						<div class="form-group">
+							<label for="signupName" class="sr-only">Nombre</label>
+							<input type="text" id="signupName" class="form-control" placeholder="Nombre" required >
+						</div>
+						<div class="form-group">
+							<label for="signupLastName" class="sr-only">Apellido</label>
+							<input type="text" id="signupLastName" class="form-control" placeholder="Apellido" required>
+						</div>
+						<div class="form-group">
+							<label for="signupUser" class="sr-only">Username</label>
+							<input type="text" id="signupUser" placeholder="Nombre de Usuario" class="form-control">
+						</div>
+						<div class="form-group">
+							<label for="signupEmail" class="sr-only">Email</label>
+							<input type="email" id="signupEmail" class="form-control" placeholder="Email" required>
+						</div>
+						<div class="form-group">
+							<label for="signupPass" class="sr-only">Password</label>
+							<input type="password" id="signupPass" placeholder="Contrasena" class="form-control" required>
+						</div>
+						<div class="form-group">
+							<label for="signupPass2" class="sr-only">Password</label>
+							<input type="password" id="signupPass2" placeholder="Confirma tu contrasena" class="form-control" required>
+						</div>
+						<div class="form-group">
+							<div id="result"></div>
+						</div>
+						<div class="form-group">
+						<input type="submit" value="Sign Up" Class="btn btn-default">
+						</div>
 					</form>
-					
 				</div>
-				<div class="col-md-1"></div>
+				<div class="col-md-4"></div>
 			</row>
       
 
     </div> <!-- /container -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script>
+			function toggleStL(id1, id2, btnId1, btnId2) {
+				var signupForm = document.getElementById(id1);
+				var loginForm = document.getElementById(id2);
+				var signupBtn = document.getElementById(btnId1);
+				var loginBtn = document.getElementById(btnId2);
+				if (signupForm.style.display === 'none') {
+					signupForm.style.display = '';
+					loginForm.style.display = 'none';
+					signupBtn.className = "btn btn-primary";
+					loginBtn.className = "btn btn-default";
+				}
+			}
+			function toggleLtS(id1, id2, btnId1, btnId2) {
+				var loginForm = document.getElementById(id1)
+				var signupForm = document.getElementById(id2)
+				var loginBtn = document.getElementById(btnId1);
+				var signupBtn = document.getElementById(btnId2);
+				if (loginForm.style.display === 'none') {
+					loginForm.style.display = '';
+					signupForm.style.display = 'none';
+					loginBtn.className = "btn btn-primary";
+					signupBtn.className = "btn btn-default";
+				}
+			}
+		</script>
 		<script src="js/login.js"></script>
   </body>
 </html>
