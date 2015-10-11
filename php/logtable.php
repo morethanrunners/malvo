@@ -5,7 +5,7 @@ date_default_timezone_set ('UTC');
 $server = "localhost";
 $root = "root";
 $password = "goldensun2591";
-$database = "Runlog";
+$database = "runlg";
 $conn = mysqli_connect($server, $root, $password, $database);
 
 // Check connection
@@ -13,7 +13,7 @@ if (!$conn) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$select = "SELECT * FROM runninglog ORDER BY fecha DESC, run_id DESC LIMIT 7";
+$select = "SELECT * FROM runlog ORDER BY run_date DESC, run_id DESC LIMIT 7";
 $query_select = mysqli_query($conn, $select);
 
   //cuenta el numero de rows
@@ -24,7 +24,7 @@ if ($num_rows > 0){
 	while ($row = mysqli_fetch_assoc($query_select)){
     
 		//transforma las variables tiempo y ritmo a minutos y segundos 
-		$tiempo = $row["tiempo"];
+		$tiempo = $row["time"];
 		$segundos = $tiempo % 60;
 		$minutos = ($tiempo / 60) % 60;
 		$horas = floor(($tiempo / 60) / 60);
@@ -34,7 +34,7 @@ if ($num_rows > 0){
 			if ($minutos < 10) {
 				$minutos = sprintf('%02d', $minutos);
 			}
-		$ritmo = $row["ritmo"];
+		$ritmo = $row["pace"];
 		$ritmosegundos = $ritmo % 60;
 		$ritmominutos = ($ritmo / 60) % 60;
 		$ritmohoras = floor(($ritmo / 60) / 60);
@@ -44,14 +44,14 @@ if ($num_rows > 0){
 			if ($ritmominutos < 10) {
 				$ritmominutos = sprintf('%02d', $ritmominutos);
 			}
-		$ppm = $row["ppm"];
-		$entr = $row["entr"];
+		$ppm = $row["bpm"];
+		$entr = $row["run_type"];
 		
 		//transforma la distancia de m a km para mostrarla en la tabala la guarda en un avariable
-     $distancia_km = $row["distancia"] / 1000;
+     $distancia_km = $row["distance"] / 1000;
 		
 		//convierte la fecha de mysql a "m/d/y" y la almacena la fecha en una variable
-    $strtotime = strtotime($row["fecha"]);
+    $strtotime = strtotime($row["run_date"]);
 		$fechadisplayformat = date ("m/d/y", $strtotime);
 		
     //muestra la fecha y distancia
@@ -75,7 +75,7 @@ if ($num_rows > 0){
     }
     
     //muestra las ppm
-    print " /km</td><td>" .$row["ppm"]. "</td><td>" .$row["entr"]. "</td></tr>";
+    print " /km</td><td>" .$ppm. "</td><td>" .$entr. "</td></tr>";
 }
 	
  }

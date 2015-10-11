@@ -6,7 +6,7 @@ date_default_timezone_set ('UTC');
 $server = "localhost";
 $root = "root";
 $password = "goldensun2591";
-$database = "Runlog";
+$database = "runlg";
 $conn = mysqli_connect($server, $root, $password, $database);
 
 // Check connection
@@ -68,8 +68,8 @@ else{
 
     
     //codigo para insertar las variables a la base de datos. el campo de 'id' siempre se pone NULL porque esta en A_I. la fecha se cambia del formato de input al formato de mysql. si el formulario los permite los valores vacios se agregan como NULL.
-$input = "INSERT INTO runninglog (run_id, fecha, distancia, tiempo, ritmo, ppm, entr)
-VALUES (NULL, STR_TO_DATE('$fecha', '%m/%d/%Y'), $distancia, $tiempo, $ritmo, $ppm, $entr)";
+$input = "INSERT INTO runlog (run_id, run_date, distance, time, pace, bpm, run_type, log_date)
+VALUES (NULL, STR_TO_DATE('$fecha', '%m/%d/%Y'), $distancia, $tiempo, $ritmo, $ppm, $entr, now());";
 
 if(mysqli_query($conn, $input)){
 	echo "<br>registro con exito";

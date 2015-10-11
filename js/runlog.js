@@ -20,6 +20,7 @@ function newLog() {
 	var segundos = document.getElementById("segundos").value;
 	var ppm = document.getElementById("ppm").value;
 	var entrenamiento = document.getElementById("entrenamiento").value;
+
 	var vars = "fecha="+fecha+"&distancia="+distancia+"&horas="+horas+"&minutos="+minutos+"&segundos="+segundos+"&ppm="+ppm+"&entrenamiento="+entrenamiento;
 	
 	hr.open("POST", url, true);
@@ -32,6 +33,11 @@ function newLog() {
 	    }
     }
 	hr.send(vars);
+}
+
+function reset() {
+	var form = document.getElementById("form");
+	form.reset();
 }
 
 function logTable(){
