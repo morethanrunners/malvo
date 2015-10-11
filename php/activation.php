@@ -2,7 +2,7 @@
 	$server = "localhost";
 	$root = "root";
 	$pass = "goldensun2591";
-	$database = "test";
+	$database = "runlg";
 	$conn = mysqli_connect($server, $root, $pass, $database);
 
 	// Check connection

@@ -3,7 +3,7 @@
 $server = "localhost";
 $root = "root";
 $pass = "goldensun2591";
-$database = "test";
+$database = "runlg";
 //conecta  a la base de datos
 $conn = mysqli_connect($server, $root, $pass, $database);
 // Check connection
@@ -82,7 +82,7 @@ else {
 				//codigo para enviar el correo de activacion cuando se agrego el usuario
 				$to = "$email";
 				$from = "erwinhenriquez91@gmail.com";
-				$subject = "Malvo acount activation";
+				$subject = "RunLg acount activation";
 				$message = '<html>Hola '.$username.',  ingresa en el siguiente link para poder activar tu cuenta <a href="http://localhost/~erwinhenriquezviejo/malvo/php/activation.php?user_id='.$user_id.'&username='.$username.'&email='.$email.'&secure_pass='.$secure_pass.'">ACTIVA TU CUENTA</a>';
 				$headers = "From: $from\n";
 				$headers .= "Content-type: text/html; charset=iso-8859-1\n";
