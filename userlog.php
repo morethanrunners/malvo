@@ -1,3 +1,15 @@
+<?php
+include_once("php/check_login_status.php");
+
+if(isset($_GET["user"])){
+	$user = mysqli_real_escape_string($conn, $_GET['user']);
+} 
+
+else {
+    header("location: http://localhost/~erwinhenriquezviejo/malvo/loginpage.php");	
+}
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -142,29 +154,6 @@
           
         </div>
       </div>
-	<!--		<div class="training_plan">
-			<div class="plan_input">
-				<h2>Training program</h2>
-				<form action="<?php htmlspecialchars($_SERVER["PHP_SELF"]);?> "method="post">
-			Date<br>
-			<input type="text" name="fecha_train" placeholder="mm/dd/yy" required><br>
-			Distance<br>
-			<input type="number" name="distancia_train" step="0.1" placeholder="distance in 'Km'"><br>
-			Training type<br>
-			<input type="text" name="tipo_train" required><br>
-			Comments<br>
-			<input type="text" name="coment_train" maxlength="140"><br>
-			<input type="submit" name="training_program">
-				</form>
-			</div>
-				<div id="data2"></div>
-			<div class="plan">
-				
-			<?php
-include 'php/trainplantable.php';
-			?>
-</div>
-	</div>-->
     </div>
   </div>
 	
