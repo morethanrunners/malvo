@@ -10,10 +10,16 @@ function logIn() {
 			hr.onreadystatechange = function() {
 				if(hr.readyState === 4 && hr.status === 200) {
 					var return_data = hr.responseText;
-			document.getElementById("login").innerHTML = return_data;
+					if (return_data == "Debes colocar todos los datos." || return_data == "Debes activar tu cuenta antes de poder ingresar." || return_data == "algo salio mal" || return_data == "la contrasena es incorrecta" || return_data == "Parece que ese usuario no existe") {
+						document.getElementById("login").innerHTML = return_data;
+					}
+					else {
+							window.location.assign("http://localhost/~erwinhenriquezviejo/malvo/userlog.php?user="+return_data);
+					}
 	    }
     }
 	hr.send(vars);
+	document.getElementById("test").innerHTML = vars;
 		}
 
 function signUp() {
@@ -41,3 +47,36 @@ function signUp() {
 			}
 			hr.send(vars);
 		}
+
+/*
+IMPORTANTE
+
+esta funcion no esta lista para ser usada
+*/
+
+function recoverPass() {
+	var hr = new XMLHttpRequest;
+	var url = "http://localhost/~erwinhenriquezviejo/malvo/php/recoverpass.php";
+	var firstname = document.getElementById("recoverName").value;
+	var lastname = document.getElementById("recoverLastName").value;
+	var user = document.getElementById("recoverUser").value;
+	var email = document.getElementById("recoverEmail").value;
+	var email2 = document.getElementById("recoverEmail2").value;
+	var vars = "firstname="+firstname+"&lastname="+lastname+"&user="+user+"&email="+email+"&email2="+email2;
+			
+			hr.open("POST", url, true);
+			hr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			hr.onreadystatechange = function() {
+				if(hr.readyState === 4 && hr.status === 200) {
+					var return_data = hr.responseText;
+					if (return_data == "ingreso con exito") {
+						window.location.assign('http://localhost/~erwinhenriquezviejo/malvo/index.html');
+					}
+					else {
+						document.getElementById("login").innerHTML = return_data;
+					}
+	    }
+    }
+	hr.send(vars);
+	document.getElementById("test").innerHTML = vars;
+}
