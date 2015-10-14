@@ -1,3 +1,11 @@
+<?php
+include_once("php/check_login_status.php");
+// If user is already logged in, header that weenis away
+if($user_ok == true){
+	header("location: userlog.php?user=".$_SESSION["user"]);
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -30,14 +38,11 @@
 				<div class="col-md-4 text-center colorfull">
 					<row>
 					<div class="col-md-6">
-						
 						<button id="loginBtn" class="btn btn-primary" onclick="toggleLtS('loginForm', 'signupForm', 'loginBtn', 'signupBtn');">Entrar</button>
 					</div>
-						
 					<div class="col-md-6">
 						<button id="signupBtn" class="btn btn-default" onclick="toggleStL('signupForm', 'loginForm', 'signupBtn', 'loginBtn');">Registrarse</button>
 					</div>
-						
 					</row>
 					
 					<br><br>
@@ -54,6 +59,7 @@
 						</div>	
 						<div class="form-group">
 							<div id="login"></div>
+							<div id="test"></div>
 						</div>
 						<div class="form-group">
 							<input type="submit" value="Log In" class="btn btn-default">
@@ -92,6 +98,7 @@
 						<input type="submit" value="Sign Up" Class="btn btn-default">
 						</div>
 					</form>
+				<a href="recoverpass.html"><strong>Olvidaste tu clave?</strong></a>
 				</div>
 				<div class="col-md-4"></div>
 			</row>

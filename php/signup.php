@@ -1,15 +1,5 @@
 <?php
-//pone las variables para conectar a la base de datos
-$server = "localhost";
-$root = "root";
-$pass = "goldensun2591";
-$database = "runlg";
-//conecta  a la base de datos
-$conn = mysqli_connect($server, $root, $pass, $database);
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . $conn->connect_error);
-}
+include_once("conn.php");
 
 //pone las variables para ser utilizadas
 $username = mysqli_real_escape_string($conn, $_POST['user']);
