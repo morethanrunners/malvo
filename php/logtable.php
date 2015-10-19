@@ -1,19 +1,7 @@
 <?php
-date_default_timezone_set ('UTC');
+include_once('check_login_status.php');
 
-		//Conecta con el servidor
-$server = "localhost";
-$root = "root";
-$password = "goldensun2591";
-$database = "runlg";
-$conn = mysqli_connect($server, $root, $password, $database);
-
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-$select = "SELECT * FROM runlog ORDER BY run_date DESC, run_id DESC LIMIT 7";
+$select = "SELECT * FROM runlog WHERE user_id='".$log_id."' ORDER BY run_date DESC, run_id DESC LIMIT 7";
 $query_select = mysqli_query($conn, $select);
 
   //cuenta el numero de rows

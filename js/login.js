@@ -10,8 +10,10 @@ function logIn() {
 			hr.onreadystatechange = function() {
 				if(hr.readyState === 4 && hr.status === 200) {
 					var return_data = hr.responseText;
-					if (return_data == "Debes colocar todos los datos." || return_data == "Debes activar tu cuenta antes de poder ingresar." || return_data == "algo salio mal" || return_data == "la contrasena es incorrecta" || return_data == "Parece que ese usuario no existe") {
-						document.getElementById("login").innerHTML = return_data;
+					document.getElementById("loginresult").innerHTML = "Please Wait..."
+					
+					if (return_data == "Debes colocar todos los datos" || return_data == "Debes activar tu cuenta antes de poder ingresar" || return_data == "Algo salio mal" || return_data == "La contrasena es incorrecta" || return_data == "Parece que ese usuario no existe") {
+						document.getElementById("loginresult").innerHTML = return_data;
 					}
 					else {
 							window.location.assign("http://localhost/~erwinhenriquezviejo/malvo/userlog.php?user="+return_data);
@@ -19,7 +21,6 @@ function logIn() {
 	    }
     }
 	hr.send(vars);
-	document.getElementById("test").innerHTML = vars;
 		}
 
 function signUp() {

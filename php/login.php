@@ -6,7 +6,7 @@ $user = mysqli_real_escape_string($conn, $_POST['user']);
 $password = mysqli_real_escape_string($conn, $_POST['password']);
 
 if ($user == "" || $password == "") {
-	echo "Debes colocar todos los datos.";
+	echo "Debes colocar todos los datos";
 	exit;
 }
 //sql para selecionar el usuario correspondiente al ingresado
@@ -36,7 +36,7 @@ if ($sql_rows == 1){
 			
 			//si el usuario no esta activado
 			if ($numrows == 0) {
-				echo "Debes activar tu cuenta antes de poder ingresar.";
+				echo "Debes activar tu cuenta antes de poder ingresar";
 			}
 			//si el usuario esta activado
 			else {
@@ -62,11 +62,11 @@ if ($sql_rows == 1){
 			}
 		}
 		else {
-			echo "algo salio mal";	
+			echo "Algo salio mal";	
 		}
 	}
 	else {
-		echo "la contrasena es incorrecta";
+		echo "La contrasena es incorrecta";
 	}
 }
 else {

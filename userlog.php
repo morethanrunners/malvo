@@ -3,6 +3,9 @@ include_once("php/check_login_status.php");
 
 if(isset($_GET["user"])){
 	$user = mysqli_real_escape_string($conn, $_GET['user']);
+	if($user != $log_username) {
+		header("location: http://localhost/~erwinhenriquezviejo/malvo/loginpage.php");
+	}
 } 
 
 else {
@@ -17,31 +20,49 @@ else {
   <title>Malvo. A Training Log for runners.</title>
   <meta charset="utf-8">
 <!--  Hojas de estilo-->
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="angular-chart.js/angular-chart.min.css">
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/angular-chart.js/angular-chart.min.css">
 </head>
   
 <body ng-app="app" onload="logTable();getData();">
-<!--  Jumbotron-->
-  <div class="jumbotron">
-    <div class="container">
-<!--      Titulo principal-->
-      <h1 class="lead">RunLg. <small>A Training Log for runners.</small></h1>
-			</div>
-  </div>
+	
+<!--    Navbar-->
+    <nav class="navbar navbar-default texto">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">RunLg | <small>A training log for runners.</small></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="landing.html">User</a></li>
+            <li><a href="#">Options</a></li>
+            
+            <li><a href="php/logout.php" class="sign-in">Log Out</a></li>
+            
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
 <!-- Espacio para los forms -->
   <div class="forms">
-    
-    <div class="container">
+  <div class="container">
       
-     <form id="form">
+     <form id="form" ng-app="app" onsubmit="getData();">
 <!--        Row para los forms-->
         <div class="row">
           
 <!--				Fecha-->
           <div class="col-md-2">
-            <h4>Date</h4>
+            <h4>Fecha</h4>
             <div class="input-group">
               <span class="input-group-addon custom-padding"><span class="glyphicon glyphicon-calendar"></span></span>
 							<input type="text" name="fecha" id="fecha" class="form-control" placeholder="mm/dd/yy" aria-describedby="date" required>
@@ -51,7 +72,7 @@ else {
           
 <!--          Distancia-->  
           <div class="col-md-3">
-            <h4>Distance</h4>
+            <h4>Distancia</h4>
             <div class="input-group">
               <span class="input-group-addon custom-padding"><span class="glyphicon glyphicon-road"></span></span>
 							<input type="number" id="distancia" name="distancia" step="0.1" class="form-control" placeholder="in Km" aria-describedby="dist" required>
@@ -60,7 +81,7 @@ else {
           
 <!--          Tiempo-->
           <div class="col-md-3">
-            <h4>Time</h4>
+            <h4>Tiempo</h4>
             <div class="input-group">
               <span class="input-group-addon custom-padding"><span class="glyphicon glyphicon-time"></span></span>
               <input type="text" id="horas" name="horas" class="form-control" placeholder="Hrs" aria-describedby="dist">
@@ -74,7 +95,7 @@ else {
 
 <!--          PPM-->
           <div class="col-md-2">
-            <h4>BPM</h4>
+            <h4>PPM</h4>
             <div class="input-group"><span class="input-group-addon custom-padding"><span class="glyphicon glyphicon-heart"></span></span>
 							<input type="text" id="ppm" name="ppm" class="form-control" placeholder="BPM" aria-describedby="dist">
             </div>
@@ -82,7 +103,7 @@ else {
 <!--          Tipo-->
           
           <div class="col-md-2">
-            <h4>Type of Training</h4>
+            <h4>Entrenamiento</h4>
             <div class="input-group"><span class="input-group-addon custom-padding" id="pace"><span class="glyphicon glyphicon-flag"></span></span>
 							<input type="text" id="entrenamiento" name="entrenamiento" class="form-control" placeholder="Type" aria-describedby="dist">
             </div>
