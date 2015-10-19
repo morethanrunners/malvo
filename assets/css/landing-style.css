@@ -26,6 +26,7 @@ h1,h2,h3{
   line-height: 1.8em;
 }
 
+
 .features p{
   padding-right: 10%;
   padding-left: 10%;
@@ -56,6 +57,8 @@ h1,h2,h3{
 	background: url(img/run2.jpg);
 	background-size: 100%;
 	background-repeat: no-repeat;
+	background-position: center;
+	margin-bottom: 0px;
 }
 
 .sign-in{
@@ -88,6 +91,7 @@ h1,h2,h3{
 
 .fondo1{
   background-color: #257FBA;
+	margin-top: 20px; 
 }
 
 
@@ -110,10 +114,30 @@ h1,h2,h3{
   background-color: #d93832;
   border-color: #d3443f;
 }
-
 footer{
   padding-top: 20px;
   padding-bottom: 15px;
   border-top: 5px solid #fd3a34;
 }
+.img-holder-1 {
+	background: url(img/nature3.jpeg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+.texto-blanco {
+	color: whitesmoke;
+}
+.img-holder-2 {
+	background: url(img/nature4.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
 
+.img-holder-3 {
+	background: url(img/nature8.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
