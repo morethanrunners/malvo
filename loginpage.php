@@ -18,9 +18,11 @@ if($user_ok == true){
 		
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans|Droid+Sans' rel='stylesheet' type='text/css'>
 		<!-- Custom CSS-->
 		<link rel="stylesheet" href="assets/css/landing-style.css">
 		<link href="assets/css/style.css" rel="stylesheet">
+		
 	</head>
 
   <body>
@@ -52,7 +54,8 @@ if($user_ok == true){
 				<row>
 					<div class="col-md-4"></div>
 					<div class="col-md-4 text-center colorfull">
-						<div class="wrapper">
+						<div class="transparent">
+						<div class="row">
 							<div class="col-md-6">
 							<button id="loginBtn" class="btn btn-primary" onclick="toggleLtS('loginForm', 'signupForm', 'loginBtn', 'signupBtn');">Entrar</button>
 						</div>
@@ -60,7 +63,7 @@ if($user_ok == true){
 							<button id="signupBtn" class="btn btn-default" onclick="toggleStL('signupForm', 'loginForm', 'signupBtn', 'loginBtn');">Registrarse</button>
 						</div>
 						</div>
-						<form id="loginForm" class="form" action="" method="post" onsubmit="logIn(); return false">
+						<form id="loginForm" class="form texto-blanco" action="" method="post" onsubmit="logIn(); return false">
 							<h3>Entrar</h3>
 							<div class="form-group">
 								<label for="loginUser" class="sr-only">Username</label>
@@ -77,7 +80,7 @@ if($user_ok == true){
 								<input type="submit" value="Log In" class="btn btn-default">
 							</div>
 						</form>
-						<form id="signupForm" class="form" action="" method="post" onsubmit="signUp(); return false" class="form-signup" style="display:none">
+						<form id="signupForm" class="form texto-blanco" action="" method="post" onsubmit="signUp(); return false" class="form-signup" style="display:none">
 						<h3>Registrarse</h3>
 							<div class="form-group">
 								<label for="signupName" class="sr-only">Nombre</label>
@@ -111,6 +114,7 @@ if($user_ok == true){
 							</div>
 						</form>
 						<a class="textoblanco" href="recoverpass.html">Olvidaste tu clave?</a>
+						</div>
 					</div>
 					<div class="col-md-4"></div>
 				</row>
@@ -143,5 +147,6 @@ if($user_ok == true){
 			}
 		</script>
 		<script src="js/login.js"></script>
+		
   </body>
 </html>

@@ -1,6 +1,10 @@
 /*
   Primary color
     #ED3A34
+	En el Call to action
+		#30788f
+	Text-box
+		#c2d8df
 */
 
 body{
@@ -52,7 +56,7 @@ h1,h2,h3{
 }
 
 .main{
-  padding-top: 150px;
+  padding-top: 200px;
   padding-bottom: 150px;
 	background: url(img/run2.jpg);
 	background-size: 100%;
@@ -90,7 +94,7 @@ h1,h2,h3{
 }
 
 .fondo1{
-  background-color: #257FBA;
+  background-color: #30788f;
 	margin-top: 20px; 
 }
 
@@ -140,4 +144,13 @@ footer{
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
+}
+
+.text-box {
+	background-color: rgba(200,212,216,0.3);
+	border-radius: 5px;
+}
+
+.main-color {
+	color: #ED3A34;
 }
