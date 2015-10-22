@@ -55,31 +55,34 @@ if($user_ok == true){
 					<div class="col-md-4"></div>
 					<div class="col-md-4 text-center colorfull">
 						<div class="transparent">
-						<div class="row">
-							<div class="col-md-6">
-							<button id="loginBtn" class="btn btn-primary" onclick="toggleLtS('loginForm', 'signupForm', 'loginBtn', 'signupBtn');">Entrar</button>
-						</div>
-							<div class="col-md-6">
-							<button id="signupBtn" class="btn btn-default" onclick="toggleStL('signupForm', 'loginForm', 'signupBtn', 'loginBtn');">Registrarse</button>
-						</div>
-						</div>
-						<form id="loginForm" class="form texto-blanco" action="" method="post" onsubmit="logIn(); return false">
-							<h3>Entrar</h3>
-							<div class="form-group">
-								<label for="loginUser" class="sr-only">Username</label>
-								<input type="text" id="loginUser" class="form-control" placeholder="Nombre de usuario" required>
+							
+							<!--Mecanismo de intercambio de formulario con botones con botones-->
+							
+							<div class="row">
+								<div class="col-md-6">
+								<button id="loginBtn" class="btn btn-default" onclick="toggleLtS('loginForm', 'signupForm', 'loginBtn', 'signupBtn');">Entrar</button>
+								</div>
+								<div class="col-md-6">
+								<button id="signupBtn" class="btn btn-primary" onclick="toggleStL('signupForm', 'loginForm', 'signupBtn', 'loginBtn');">Registrarse</button>
+								</div>
 							</div>
-							<div class="form-group">
-								<label for="loginPass" class="sr-only">Password</label>
-								<input type="password" id="loginPass" class="form-control" placeholder="Contrasena" required>
-							</div>	
-							<div class="form-group">
-								<div id="loginresult"></div>
-							</div>
-							<div class="form-group">
-								<input type="submit" value="Log In" class="btn btn-default">
-							</div>
-						</form>
+							<form id="loginForm" class="form texto-blanco" action="" method="post" onsubmit="logIn(); return false">
+								<h3>Entrar</h3>
+								<div class="form-group">
+									<label for="loginUser" class="sr-only">Username</label>
+									<input type="text" id="loginUser" class="form-control" placeholder="Nombre de usuario" required>
+								</div>
+								<div class="form-group">
+									<label for="loginPass" class="sr-only">Password</label>
+									<input type="password" id="loginPass" class="form-control" placeholder="Contrasena" required>
+								</div>	
+								<div class="form-group">
+									<div id="loginresult"></div>
+								</div>
+								<div class="form-group">
+									<input type="submit" value="Log In" class="btn btn-default">
+								</div>
+							</form>
 						<form id="signupForm" class="form texto-blanco" action="" method="post" onsubmit="signUp(); return false" class="form-signup" style="display:none">
 						<h3>Registrarse</h3>
 							<div class="form-group">
@@ -113,7 +116,7 @@ if($user_ok == true){
 							<input type="submit" value="Sign Up" Class="btn btn-default">
 							</div>
 						</form>
-						<a class="textoblanco" href="recoverpass.html">Olvidaste tu clave?</a>
+						<a class="textoblanco" href="recoverpage.php">Olvidaste tu clave?</a>
 						</div>
 					</div>
 					<div class="col-md-4"></div>
@@ -129,10 +132,12 @@ if($user_ok == true){
 				if (signupForm.style.display === 'none') {
 					signupForm.style.display = '';
 					loginForm.style.display = 'none';
-					signupBtn.className = "btn btn-primary";
-					loginBtn.className = "btn btn-default";
+					signupBtn.className = "btn btn-default";
+					loginBtn.className = "btn btn-primary";
 				}
 			}
+		</script>
+		<script>
 			function toggleLtS(id1, id2, btnId1, btnId2) {
 				var loginForm = document.getElementById(id1)
 				var signupForm = document.getElementById(id2)
@@ -141,12 +146,12 @@ if($user_ok == true){
 				if (loginForm.style.display === 'none') {
 					loginForm.style.display = '';
 					signupForm.style.display = 'none';
-					loginBtn.className = "btn btn-primary";
-					signupBtn.className = "btn btn-default";
+					loginBtn.className = "btn btn-default";
+					signupBtn.className = "btn btn-primary";
 				}
 			}
 		</script>
-		<script src="js/login.js"></script>
+		<script src="js/functions.js"></script>
 		
   </body>
 </html>

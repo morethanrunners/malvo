@@ -1,3 +1,12 @@
+<?php
+include_once("php/check_login_status.php");
+
+//si el usuario ya esta logiado no tiene nada que hacer en esta pagina
+if($user_ok == true){
+	header("location: userlog.php?user=".$_SESSION["user"]);
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -86,6 +95,6 @@
       
 
     </div> <!-- /container -->
-		<script src="js/login.js"></script>
+		<script src="js/functions.js"></script>
   </body>
 </html>

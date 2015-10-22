@@ -19,16 +19,30 @@ else {
 		$sql = "SELECT * FROM users WHERE username='".$user."' AND email='".$email."' AND firstname='".$firstname."' AND lastname='".$lastname."' LIMIT 1";
 		$sql_query = mysqli_query($conn, $sql);
 		$num_rows = mysqli_num_rows($sql_query);
-		
+
 		if ($num_rows != 1) {
 			echo "Tus datos no se encuentran en el sistema. Por favor verifica e ingresalos nuevamente";
+
+			//para gestionar errores elimar al estar live
 			echo $sql;
+
 			exit;
 		}
 		else {
 			while($row = mysqli_fetch_assoc($sql_query)) {
 				$user_id = $row['user_id'];
+				$user = $row['username'];
+				$email = $row['email'];
 			}
+			//set sessions
+			$_SESSION['user_id'] = $user_id;
+			$_SESSION['user'] = $user;
+
+			//set COOKIES
+				setcookie("user_id", $user_id, strtotime( '+30 days' ), "/", "", "", TRUE);
+				setcookie("user", $user, strtotime( '+30 days' ), "/", "", "", TRUE);
+
+			//envia el correo de recuperacion
 			$to = "$email";
 			$from = "erwinhenriquez91@gmail.com";
 			$subject = "RunLg recuperacion de contrasena";
@@ -36,7 +50,7 @@ else {
 			$headers = "From: $from\n";
 			$headers .= "Content-type: text/html; charset=iso-8859-1\n";
 			mail($to, $subject, $message, $headers);
-			echo "hemos enviado un correo a la direccion proporcionada para que puedas restablecer tu contrasena. Verifica tu bandeja de entrada en unos minutos.";
+			echo "Hemos enviado un correo a la direccion proporcionada para que puedas restablecer tu contrasena. Verifica tu bandeja de entrada en unos minutos.";
 		}
 	}
 }

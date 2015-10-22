@@ -51,7 +51,7 @@ if (isset($_GET['user_id']) && isset($_GET['username']) && isset($_GET['email'])
 		}
 		if ($numrows == 1) {
 			echo "Activacion Exitosa pudes ingresar a tu cuenta.<br><br>";
-			echo '<a href="loginpage.php">Regresa a la pagina de LogIn</a>';
+			echo '<a href="http://localhost/~erwinhenriquezviejo/malvo/loginpage.php">Regresa a la pagina de LogIn</a>';
 			exit;
 		}
 	}

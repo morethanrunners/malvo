@@ -1,3 +1,78 @@
+<?php
+session_start();
+include_once("php/check_login_status.php");
+
+//si el usuario esta logiado lo saca de aqui
+if($user_ok == true){
+	header("location: userlog.php?user=".$_SESSION["user"]);
+    exit();
+}
+
+//usa el get que se envia desde el correo en la direccion
+$emai_user_id = $_GET['user_id'];
+
+//chequea la SESSION pone las variables
+if (isset($_SESSION['user_id']) && isset($_SESSION['user'])) {
+	$user_id = mysqli_real_escape_string($conn, $_SESSION['user_id']);
+	$user = mysqli_real_escape_string($conn, $_SESSION['user']);
+}
+
+//chequea las COOKIES pone las variables
+elseif (isset($_COOKIE["user_id"]) && isset($_COOKIE["user"])) {
+	$_SESSION['user_id'] = mysqli_real_escape_string($conn, $_COOKIE['user_id']);
+    $_SESSION['user'] = mysqli_real_escape_string($conn, $_COOKIE['user']);
+	
+	$user_id = $_SESSION['user_id'];
+	$user = $_SESSION['user'];
+}
+
+//seccion de errores
+if (empty($emai_user_id)) {
+	$error = "no se envio nada";
+	echo $error;
+	exit;
+}
+elseif ($emai_user_id != $user_id) {
+	echo "algo salio mal";
+	exit;
+}
+//fin de la seccion de errores
+
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+	$pass1 = $_POST['newPass'];
+	$pass2 = $_POST['newPass2'];
+	$secure_pass = password_hash($pass1, PASSWORD_DEFAULT);
+		
+	//seccion de errores
+	if (strlen($pass1) < 8 || strlen($pass2) < 8) {
+		$error = "Tu contrasena debe tener al menos 8 caracteres";
+	}
+	elseif ($pass1 != $pass2) {
+		$error = "Las contrasenas no coinciden";
+	}
+	//fin de los errores
+	
+	else {
+		$sql = "UPDATE users SET password='".$secure_pass."' WHERE user_id='".$user_id."' AND username='".$user."' LIMIT 1";
+		$sql_update = mysqli_query($conn, $sql);
+		if ($sql_update == true) {
+			$exito = "Clave actualizada con exito, ingresa AQUI";
+			
+			//elimina la session y las cookies utilizadas en este proceso
+			
+				//pone la session como una array vacia.
+			$_SESSION = array();
+				//expira las Cookies
+			if (isset($_COOKIE["user_id"]) && isset($_COOKIE["user"])) {
+				setcookie("user_id", '', strtotime( '-5 days' ), '/');
+				setcookie("user", '', strtotime( '-5 days' ), '/');
+			}
+				//destruye las variables de la session
+			session_destroy();
+		}
+	}
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -30,10 +105,10 @@
 				<div class="col-md-6 text-center colorfull">
 					<h3>Recuperar contrasena</h3>
 					<p>Para modificar tu contrasena ingresa tu nueva contrasena en el formulario</p>
-					<form id="changePassForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+					<form id="changePassForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
 						<div class="form-group">
 							<label for="newPass" class="sr-only">Contrasena</label>
-							<input type="password" id="newPass" name="newPass" class="form-control" placeholder="Nueva contrasena" required>
+							<input type="password" id="newPass1" name="newPass1" class="form-control" placeholder="Nueva contrasena" required>
 						</div>
 						<div class="form-group">
 							<label for="newPass2" class="sr-only">Confirma tu contrasena</label>
@@ -49,22 +124,6 @@
       
 
     </div> <!-- /container -->
-		<script src="js/login.js"></script>
+		<script src="js/functions.js"></script>
   </body>
 </html>
-<?php
-$user_id = $_GET['user_id'];
-if (empty($user_id)) {
-	$error = "no se envio nada";
-	exit;
-}
-else {
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	$pass1 = $_POST['newPass'];
-	$pass2 = $_POST['newPass2'];
-	echo $pass1;
-	echo $pass2;
-	echo $user_id;
-}
-}
-?>
