@@ -46,11 +46,11 @@ else {
 			$to = "$email";
 			$from = "erwinhenriquez91@gmail.com";
 			$subject = "RunLg recuperacion de contrasena";
-			$message = '<html>Hola '.$user.', ingresa en el siguiente link para poder cambiar tu contrasena <a href="http://localhost/~erwinhenriquezviejo/malvo/changepass.php?user_id='.$user_id.'">RECUPERAR CONTRASENA</a>';
+			$message = '<html>Hola '.$user.', ingresa en el siguiente link para poder cambiar tu contrasena <a href="http://localhost/~erwinhenriquezviejo/malvo/changepage.php?user_id='.$user_id.'">RECUPERAR CONTRASENA</a>';
 			$headers = "From: $from\n";
 			$headers .= "Content-type: text/html; charset=iso-8859-1\n";
 			mail($to, $subject, $message, $headers);
-			echo "Hemos enviado un correo a la direccion proporcionada para que puedas restablecer tu contrasena. Verifica tu bandeja de entrada en unos minutos.";
+			echo "exito";
 		}
 	}
 }

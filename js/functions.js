@@ -49,12 +49,6 @@ function signUp() {
 			hr.send(vars);
 		}
 
-/*
-IMPORTANTE
-
-esta funcion no esta lista para ser usada
-*/
-
 function recoverPass() {
 	var hr = new XMLHttpRequest;
 	var url = "http://localhost/~erwinhenriquezviejo/malvo/php/recoverpass.php";
@@ -64,14 +58,14 @@ function recoverPass() {
 	var email = document.getElementById("recoverEmail").value;
 	var email2 = document.getElementById("recoverEmail2").value;
 	var vars = "firstname="+firstname+"&lastname="+lastname+"&user="+user+"&email="+email+"&email2="+email2;
-			
-			hr.open("POST", url, true);
-			hr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	
+	hr.open("POST", url, true);
+	hr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 			hr.onreadystatechange = function() {
 				if(hr.readyState === 4 && hr.status === 200) {
 					var return_data = hr.responseText;
-					if (return_data == "ingreso con exito") {
-						window.location.assign('http://localhost/~erwinhenriquezviejo/malvo/index.html');
+					if (return_data === "exito") {
+						document.getElementById("login").innerHTML = "<p>Hemos enviado un correo a la direccion asociada a tu cuenta para seguir con el proceso de recuperacion de contrasena.</p>"
 					}
 					else {
 						document.getElementById("login").innerHTML = return_data;
@@ -79,5 +73,32 @@ function recoverPass() {
 	    }
     }
 	hr.send(vars);
+	/*
+	Para controlar errores
 	document.getElementById("test").innerHTML = vars;
+	*/
+}
+
+function changePass() {
+	var hr = new XMLHttpRequest;
+	var url = "http://localhost/~erwinhenriquezviejo/malvo/php/changepass.php";
+	var p1 = document.getElementById("newPass1").value;
+	var p2 = document.getElementById("newPass2").value;
+	var vars = "newPass1="+p1+"&newPass2="+p2;
+
+	hr.open("POST", url, true);
+	hr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	hr.onreadystatechange = function() {
+		if(hr.readyState === 4 && hr.status === 200) {
+			var return_data = hr.responseText;
+			if (return_data === "exito") {
+				document.getElementById("changeResult").innerHTML = "Clave actualizada";
+			}
+			else {
+				document.getElementById("changeResult").innerHTML = return_data;
+			}
+		}
+	}
+	hr.send(vars);
+	document.getElementById("testResult").innerHTML = vars;
 }

@@ -38,40 +38,6 @@ elseif ($emai_user_id != $user_id) {
 }
 //fin de la seccion de errores
 
-if($_SERVER["REQUEST_METHOD"] == "POST") {
-	$pass1 = $_POST['newPass'];
-	$pass2 = $_POST['newPass2'];
-	$secure_pass = password_hash($pass1, PASSWORD_DEFAULT);
-		
-	//seccion de errores
-	if (strlen($pass1) < 8 || strlen($pass2) < 8) {
-		$error = "Tu contrasena debe tener al menos 8 caracteres";
-	}
-	elseif ($pass1 != $pass2) {
-		$error = "Las contrasenas no coinciden";
-	}
-	//fin de los errores
-	
-	else {
-		$sql = "UPDATE users SET password='".$secure_pass."' WHERE user_id='".$user_id."' AND username='".$user."' LIMIT 1";
-		$sql_update = mysqli_query($conn, $sql);
-		if ($sql_update == true) {
-			$exito = "Clave actualizada con exito, ingresa AQUI";
-			
-			//elimina la session y las cookies utilizadas en este proceso
-			
-				//pone la session como una array vacia.
-			$_SESSION = array();
-				//expira las Cookies
-			if (isset($_COOKIE["user_id"]) && isset($_COOKIE["user"])) {
-				setcookie("user_id", '', strtotime( '-5 days' ), '/');
-				setcookie("user", '', strtotime( '-5 days' ), '/');
-			}
-				//destruye las variables de la session
-			session_destroy();
-		}
-	}
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -105,9 +71,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 				<div class="col-md-6 text-center colorfull">
 					<h3>Recuperar contrasena</h3>
 					<p>Para modificar tu contrasena ingresa tu nueva contrasena en el formulario</p>
-					<form id="changePassForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+					<form id="changePassForm" action="" method="post" onsubmit="changePass(); return false">
 						<div class="form-group">
-							<label for="newPass" class="sr-only">Contrasena</label>
+							<label for="newPass1" class="sr-only">Contrasena</label>
 							<input type="password" id="newPass1" name="newPass1" class="form-control" placeholder="Nueva contrasena" required>
 						</div>
 						<div class="form-group">
@@ -116,6 +82,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 						</div>
 						<div class="form-group">
 						<input type="submit" value="Sign Up" Class="btn btn-default">
+						</div>
+						<div class="form-group">
+							<div id="changeResult"></div>
+							<div id="testResult"></div>
 						</div>
 					</form>
 				</div>
