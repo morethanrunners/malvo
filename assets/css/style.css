@@ -38,15 +38,9 @@ COLORS:::::
 }
 .login {
 	padding-top: 150px;
+	padding-bottom: 20px;
 }
-.fullsize {
-	height: 100vh;
-	background: url('img/nature7.jpeg') no-repeat   center center fixed;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-}
+
 .form {
 	padding-top: 15px;
 }
@@ -56,6 +50,14 @@ COLORS:::::
 
 .solid {
 	background-color: #000000;
+}
+.bodyback {
+	background: url('img/nature7.jpeg') no-repeat   center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
 }
 
 

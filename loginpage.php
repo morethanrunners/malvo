@@ -25,8 +25,8 @@ if($user_ok == true){
 		
 	</head>
 
-  <body>
-		<div class="container-fluid fullsize">
+  <body class="bodyback">
+		<div class="container-fluid">
 		<!--    Navbar-->
     	<nav class="navbar navbar-default navbar-fixed-top texto">
       	<div class="container">
@@ -50,8 +50,7 @@ if($user_ok == true){
         	</div><!--/.nav-collapse -->
       	</div>
     	</nav>
-			<div class="login">
-				<row>
+			<div class="row login">
 					<div class="col-md-4"></div>
 					<div class="col-md-4 text-center colorfull">
 						<div class="transparent">
@@ -120,7 +119,6 @@ if($user_ok == true){
 						</div>
 					</div>
 					<div class="col-md-4"></div>
-				</row>
 			</div>
     </div> <!-- /container -->
     <script>
