@@ -1,14 +1,11 @@
 /*
-*
-*
-*Este js es para crear funciones que permitan agregar el input a la base de datos y automaticamnete actualizar la tabla que se muestra
-*
-*
-*IMPORTANTE
-*los archivos de php de los que se extrae la data estan separados
-*
-*
-*/
+
+****IMPORTANTE****
+
+Este archivo esta fuera de uso. las finciones aqui descritas han sido agregadas a "functions.js"
+
+****IMPORTANTE****
+
 
 function newLog() {
 	var hr = new XMLHttpRequest();
@@ -53,4 +50,4 @@ function logTable(){
 		}
   }
 	hr.send();
-}
+}*/

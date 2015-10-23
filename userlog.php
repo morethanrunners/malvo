@@ -22,10 +22,11 @@ else {
 <!--  Hojas de estilo-->
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/angular-chart.js/angular-chart.min.css">
+  <link rel="stylesheet" href="angular-chart.js/angular-chart.min.css">
+	<link rel="stylesheet" href="assets/css/font-awesome.css">
 </head>
   
-<body ng-app="app" onload="logTable();getData();">
+<body ng-app="app" onload="logTable();">
 	
 <!--    Navbar-->
     <nav class="navbar navbar-default texto">
@@ -56,10 +57,11 @@ else {
   <div class="forms">
   <div class="container">
       
-     <form id="form" ng-app="app" onsubmit="getData();">
+     <form id="form">
+			 
 <!--        Row para los forms-->
         <div class="row">
-          
+     
 <!--				Fecha-->
           <div class="col-md-2">
             <h4>Fecha</h4>
@@ -119,7 +121,7 @@ else {
   </div>
 
 <!--  Espacio para la tabla y gráfica-->
-  <div class="data">
+	
 <!--    Contenedor-->
     <div class="container">
       <div class="row">
@@ -138,6 +140,7 @@ else {
                 <th>Pace <span class="caret"></span></th>
                 <th>BPM <span class="caret"></span></th>
                 <th>Type <span class="caret"></span></th>
+								<th></th>
               </tr>
             </thead>
             <tbody id="logtable">
@@ -176,7 +179,6 @@ else {
         </div>
       </div>
     </div>
-  </div>
 	
 <!--  Javascript-->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js" type="text/javascript"></script>
@@ -184,6 +186,5 @@ else {
   <script src="angular-chart.js/angular-chart.min.js"></script>
   <script src="js/app2.js"></script>
   <script src="js/functions.js"></script>
-	<script src="js/runlog.js"></script>
 </body>
 </html>

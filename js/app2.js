@@ -5,7 +5,7 @@ app.controller("BarCtrl", function ($scope, $http) {
   'use strict';
 	$http.get('http://localhost/~erwinhenriquezviejo/malvo/php/chart_data.php').then(function(response) {
 		$scope.labels = ['1', '2', '3', '4', '5', '6', '7'];
-  	$scope.series = ['Race distances (Km)'];
+  	$scope.series = ['Distancias (Km)'];
   	$scope.data = [response.data];
 	}, function(response) {
 		$scope.data = [response.data] || "Request Failed";

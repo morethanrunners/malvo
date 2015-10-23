@@ -12,6 +12,7 @@ if ($num_rows > 0){
 	while ($row = mysqli_fetch_assoc($query_select)){
     
 		//transforma las variables tiempo y ritmo a minutos y segundos 
+		$run_id = $row["run_id"];
 		$tiempo = $row["time"];
 		$segundos = $tiempo % 60;
 		$minutos = ($tiempo / 60) % 60;
@@ -43,7 +44,7 @@ if ($num_rows > 0){
 		$fechadisplayformat = date ("m/d/y", $strtotime);
 		
     //muestra la fecha y distancia
-    print '<tr><td id="fecha">' .$fechadisplayformat. '</td><td id="distancia">' .$distancia_km. " km";
+    print "<tr id='$run_id'><td>" .$fechadisplayformat. '</td><td>' .$distancia_km. " km";
 		//si segundos es < 10 agrega un 0 y la muestra si segundos > 10 lo deja asi y lo muestra
 		
 		
@@ -56,14 +57,14 @@ if ($num_rows > 0){
   
     //si rito en segundos es < 10 acomoda el formato para mostrarlo
     if($ritmohoras < 1){
-    print $ritmominutos.":".$ritmosegundos;
+    print $ritmominutos.":".$ritmosegundos." /km</td>";
     }
     else {
-      print $ritmohoras.":".$ritmominutos.":".$ritmosegundos;
+      print $ritmohoras.":".$ritmominutos.":".$ritmosegundos." /km</td>";
     }
     
     //muestra las ppm
-    print " /km</td><td>" .$ppm. "</td><td>" .$entr. "</td></tr>";
+    print "<td>" .$ppm. "</td><td>" .$entr. "</td><td><button class='fa fa-trash-o' onclick='deleteLog();'><button class='fa fa-pencil'></td></tr>";
 }
 	
  }
