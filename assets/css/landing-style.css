@@ -1,0 +1,162 @@
+/*
+  Primary color
+    #ED3A34
+	En el Call to action
+		#30788f
+	Text-box
+		#c2d8df
+*/
+
+body{
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1,h2,h3{
+  font-family: 'Droid Sans', sans-serif;
+}
+
+.main-space{
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.more{
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.lg-text p{
+  font-size: 1.3em;
+  line-height: 1.8em;
+}
+
+
+.features p{
+  padding-right: 10%;
+  padding-left: 10%;
+}
+
+.navbar-brand{
+  font-family: 'Droid Sans', sans-serif;
+}
+
+.features{
+  text-align: center;
+}
+
+.calling{
+  text-align: center;
+  padding: 120px 0px;
+	color: whitesmoke;
+}
+
+
+.featurette-divider {
+  margin: 25px 0px;
+}
+
+.main{
+  padding-top: 200px;
+  padding-bottom: 150px;
+	background: url(img/run2.jpg);
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-position: bottom;
+	min-height: 550px;
+	margin-bottom: 0px;
+}
+
+.sign-in{
+  border: 2px solid #ED3A34;
+  border-radius: 20px;
+  padding: 8px 10px !important;
+  margin: 7px 6px;
+}
+
+.sign-in{
+  color: #ED3A34 !important;
+}
+
+.texto{
+  font-size: 1.2em !important;
+}
+
+.navbar-brand {
+  font-size: 1.5em;
+}
+
+.navbar{
+  padding: 15px 0px;
+}
+
+
+.nav>li>a{
+  padding: 15px 16px;
+}
+
+.fondo1{
+  background-color: #30788f;
+	margin-top: 20px; 
+}
+
+
+.espacio25 {
+  margin: 25px 0px;
+}
+
+.btn-primary{
+  background-color: #fd3a34;
+  border-color: #ed3a34;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary.focus,
+.btn-primary:active,
+.btn-primary.active,
+.open > .dropdown-toggle.btn-primary {
+  color: #fff;
+  background-color: #d93832;
+  border-color: #d3443f;
+}
+footer{
+  padding-top: 20px;
+  padding-bottom: 15px;
+  border-top: 5px solid #fd3a34;
+}
+.img-holder-1 {
+	background: url(img/nature3.jpeg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	min-height: 550px;
+}
+.texto-blanco {
+	color: whitesmoke;
+}
+.img-holder-2 {
+	background: url(img/nature9.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: bottom;
+	min-height: 550px;
+}
+
+.img-holder-3 {
+	background: url(img/nature8.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	min-height: 550px;
+}
+
+.text-box {
+	background-color: rgba(200,212,216,0.3);
+	border-radius: 5px;
+}
+
+.main-color {
+	color: #ED3A34 !important;
+}
+
+

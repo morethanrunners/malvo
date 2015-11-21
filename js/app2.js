@@ -1,16 +1,18 @@
 /*global angular */
 var app = angular.module("app", ["chart.js"]);
 
-app.controller("BarCtrl", function ($scope) {
+app.controller("BarCtrl", function ($scope, $http) {
   'use strict';
-  $scope.labels = ['1', '2', '3', '4', '5', '6', '7'];
-  $scope.series = ['Race distances (Km)'];
+	$http.get('http://localhost/~erwinhenriquezviejo/malvo/php/chart_data.php').then(function(response) {
+		$scope.labels = ['1', '2', '3', '4', '5', '6', '7'];
+  	$scope.series = ['Distancias (Km)'];
+  	$scope.data = [response.data];
+	}, function(response) {
+		$scope.data = [response.data] || "Request Failed";
+	});
 	
-  $scope.data = [
-    [8, 10, 3, 0, 10]
-    
-  ];
 });
+	
 
 app.controller("LineCtrl", function ($scope) {
   'use strict';

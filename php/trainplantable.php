@@ -1,4 +1,11 @@
-<?php
+<!--
+IMPORTANTE
+
+este archivo no esta en uso
+
+este archivo tiene como objetivo cargar la tabla del plan de entrenamiento
+
+--><?php
 date_default_timezone_set ('UTC');
 $server = "localhost";
 $root = "root";

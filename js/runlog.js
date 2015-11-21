@@ -1,18 +1,14 @@
 /*
-*
-*
-*Este js es para crear funciones que permitan agregar el input a la base de datos y automaticamnete actualizar la tabla que se muestra
-*
-*
-*IMPORTANTE
-*los archivos de php de los que se extrae la data estan separados
-*
-*
-*/
+
+****IMPORTANTE****
+
+Este archivo esta fuera de uso. las finciones aqui descritas han sido agregadas a "functions.js"
+
+****IMPORTANTE****
+
 
 function newLog() {
 	var hr = new XMLHttpRequest();
-				
 	var url = "http://localhost/~erwinhenriquezviejo/malvo/php/newlog.php";
 	var fecha = document.getElementById("fecha").value;
 	var distancia = document.getElementById("distancia").value;
@@ -21,6 +17,7 @@ function newLog() {
 	var segundos = document.getElementById("segundos").value;
 	var ppm = document.getElementById("ppm").value;
 	var entrenamiento = document.getElementById("entrenamiento").value;
+
 	var vars = "fecha="+fecha+"&distancia="+distancia+"&horas="+horas+"&minutos="+minutos+"&segundos="+segundos+"&ppm="+ppm+"&entrenamiento="+entrenamiento;
 	
 	hr.open("POST", url, true);
@@ -33,6 +30,11 @@ function newLog() {
 	    }
     }
 	hr.send(vars);
+}
+
+function reset() {
+	var form = document.getElementById("form");
+	form.reset();
 }
 
 function logTable(){
@@ -48,4 +50,4 @@ function logTable(){
 		}
   }
 	hr.send();
-}
+}*/

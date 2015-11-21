@@ -1,21 +1,12 @@
 <?php
-$server = "localhost";
-$root = "root";
-$pass = "goldensun2591";
-$database = "test";
-$conn = mysqli_connect($server, $root, $pass, $database);
-
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . $conn->connect_error);
-}
+include_once("conn.php");
 
 //pone las variables que vienen del imput usando AJAX
-$user = $_POST['user'];
-$password = $_POST['password'];
+$user = mysqli_real_escape_string($conn, $_POST['user']);
+$password = mysqli_real_escape_string($conn, $_POST['password']);
 
 if ($user == "" || $password == "") {
-	echo "Debes colocar todos los datos.";
+	echo "Debes colocar todos los datos";
 	exit;
 }
 //sql para selecionar el usuario correspondiente al ingresado
@@ -45,22 +36,40 @@ if ($sql_rows == 1){
 			
 			//si el usuario no esta activado
 			if ($numrows == 0) {
-				echo "Debes activar tu cuenta antes de poder ingresar.";
+				echo "Debes activar tu cuenta antes de poder ingresar";
 			}
 			//si el usuario esta activado
 			else {
-				echo "ingreso con exito";
+				$sql = "SELECT user_id, username, password FROM users WHERE username='".$user."' AND activated='1' LIMIT 1;";
+				$sql_query = mysqli_query($conn, $sql);
+				$row = mysqli_fetch_assoc($sql_query);
+				$db_user_id = $row['user_id'];
+				$db_username = $row['username'];
+				$db_password = $row['password'];
+				
+				//set SESSION
+				$_SESSION['user_id'] = $db_user_id;
+				$_SESSION['user'] = $db_username;
+				$_SESSION['password'] = $db_password;
+				
+				//set COOKIES
+				setcookie("user_id", $db_user_id, strtotime( '+30 days' ), "/", "", "", TRUE);
+				setcookie("user", $db_username, strtotime( '+30 days' ), "/", "", "", TRUE);
+				setcookie("password", $db_password, strtotime( '+30 days' ), "/", "", "", TRUE);
+				echo $db_username;
+
+				
 			}
 		}
 		else {
-			echo "algo salio mal";	
+			echo "Algo salio mal";	
 		}
 	}
 	else {
-		echo "la contrasena es incorrecta";
+		echo "La contrasena es incorrecta";
 	}
 }
 else {
-	echo "Parece que es usuario no existe";
+	echo "Parece que ese usuario no existe";
 }
 ?>
