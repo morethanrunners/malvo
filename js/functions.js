@@ -30,9 +30,8 @@ function signUp() {
 			var password = document.getElementById("signupPass").value;
 			var password_confirm = document.getElementById("signupPass2").value;
 			var email = document.getElementById("signupEmail").value;
-			var firstname = document.getElementById("signupName").value;
-			var lastname = document.getElementById("signupLastName").value;
-			var vars = "user=" + user + "&password=" + password + "&password_confirm=" + password_confirm + "&email=" + email + "&firstname=" + firstname + "&lastname=" + lastname;
+			var captcha = document.getElementById("captcha").value;
+			var vars = "user=" + user + "&password=" + password + "&password_confirm=" + password_confirm + "&email=" + email;
 			hr.open("POST", url, true);
 			hr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 			hr.onreadystatechange = function() {
@@ -129,7 +128,10 @@ function newLog() {
 }
 
 function reset() {
-	var form = document.getElementById("form");
+	
+	/*Esta funcion debe corregirse para que resetee el formulario correspondiente solo cuando el submit es exitoso y de ese modo muestre el mensaje de error y dejes los datos en el formulario para que puedan corregirse*/
+	
+	var form = document.getElementById("reg-rapido");
 	form.reset();
 }
 
@@ -148,6 +150,34 @@ function logTable() {
 	hr.send();
 }
 
-function deleteLog() {
-
+function deleteRow(rowid) {   
+	var row = document.getElementById(rowid);
+	row.parentNode.removeChild(row);
+	
+	var hr = new XMLHttpRequest();
+	var url = "http://localhost/~erwinhenriquezviejo/malvo/php/deletelog.php";
+	var id = rowid;
+	var vars = "id="+id; 
+	hr.open("POST", url, true);
+	hr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+ hr.onreadystatechange = function() {
+	  if (hr.readyState === 4 && hr.status === 200) {
+			var return_data = hr.responseText;
+			document.getElementById("test").innerHTML = return_data;
+		}
+  }
+	hr.send(vars);
 }
+
+function toggle(id1, id2, btnId1, btnId2) {
+			var div1 = document.getElementById(id1);
+			var div2 = document.getElementById(id2);
+			var btn1 = document.getElementById(btnId1);
+			var btn2 = document.getElementById(btnId2);
+			if (div1.style.display === 'none') {
+				div1.style.display = '';
+				div2.style.display = 'none';
+				btn1.className = "btn btn-primary";
+				btn2.className = "btn btn-default";
+			}
+		}

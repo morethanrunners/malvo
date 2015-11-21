@@ -3,13 +3,14 @@ COLORS:::::
 
 #30788f
 
+Primary color
+    #ED3A34
+
 */
 .align-center{
   text-align: center;
 }
-.btn{
-  width: 120px;
-}
+
 .espacio25{
   margin-top: 25px;
   margin-bottom: 25px;
@@ -30,7 +31,7 @@ COLORS:::::
 .header {
 	padding: 35px;
 }
-.colorfull {
+.backdrop {
 	background: rgba(48,120,143,0.8);
 	padding-bottom: 30px;
 	padding-top: 15px;
@@ -58,6 +59,34 @@ COLORS:::::
 	-o-background-size: cover;
 	background-size: cover;
 }
+.main-color {
+	color: #ED3A34 !important;
+}
+.color-panel {
+	background-color: #30788f;
+	/*Tamano del panel cuando sabemos cual es el tmano de los dos elemnetos restantes del row
+	
+	height: calc(2 *(100vh - 50px));
+	
+	Tiene que haber una forma de que puedan heredar el tamano sin tener que ponerlo en un calculo
+	*/
+	height: calc(100vh - 50px);
+	min-height: 500px !important;
+}
+
+.user-img {
+	width: 240px;
+	height: 240px;
 }
 
 
+
+.user-area {
+	height: calc(100vh - 50px);
+	min-height: 500px !important;
+	padding-top: 15px;
+}
+
+.back-head {
+	height: 50px;
+}

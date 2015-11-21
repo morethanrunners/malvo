@@ -14,7 +14,7 @@ if($user_ok == true){
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->  
 		
-    <title>Signin Template</title>
+    <title>Malvo</title>
 		
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
@@ -42,9 +42,9 @@ if($user_ok == true){
         	<div id="navbar" class="navbar-collapse collapse">
           
           	<ul class="nav navbar-nav navbar-right">
-            	<li><a href="landing.html">Home</a></li>
+            	<li><a href="landing.html">Inicio</a></li>
             	<li><a href="#">Blog</a></li>
-            	<li><a href="loginpage.php" class="sign-in">Sign in</a></li>
+            	<li><a href="loginpage.php" class="sign-in">Entrar</a></li>
             
           	</ul>
         	</div><!--/.nav-collapse -->
@@ -52,13 +52,17 @@ if($user_ok == true){
     	</nav>
 			<div class="row login">
 					<div class="col-md-4"></div>
-					<div class="col-md-4 text-center colorfull">
+					<div class="col-md-4 text-center backdrop">
 						<div class="transparent">
 							
 							<!--Mecanismo de intercambio de formulario con botones con botones-->
 							
 							<div class="row">
 								<div class="col-md-6">
+									
+									<!--IMPORTANTE-->
+<!--										corregir el aspecto de los botones para que sean del mismo tamano-->
+									
 								<button id="loginBtn" class="btn btn-default" onclick="toggleLtS('loginForm', 'signupForm', 'loginBtn', 'signupBtn');">Entrar</button>
 								</div>
 								<div class="col-md-6">
@@ -85,14 +89,6 @@ if($user_ok == true){
 						<form id="signupForm" class="form texto-blanco" action="" method="post" onsubmit="signUp(); return false" class="form-signup" style="display:none">
 						<h3>Registrarse</h3>
 							<div class="form-group">
-								<label for="signupName" class="sr-only">Nombre</label>
-								<input type="text" id="signupName" class="form-control" placeholder="Nombre" required >
-							</div>
-							<div class="form-group">
-								<label for="signupLastName" class="sr-only">Apellido</label>
-								<input type="text" id="signupLastName" class="form-control" placeholder="Apellido" required>
-							</div>
-							<div class="form-group">
 								<label for="signupUser" class="sr-only">Username</label>
 								<input type="text" id="signupUser" placeholder="Nombre de Usuario" class="form-control">
 							</div>
@@ -109,8 +105,15 @@ if($user_ok == true){
 								<input type="password" id="signupPass2" placeholder="Confirma tu contrasena" class="form-control" required>
 							</div>
 							<div class="form-group">
+								
+								<!--Lineas de codigo para usar el api de reCaptcha-->
+								<!--<div id="captcha" class="g-recaptcha" data-sitekey="6Lfhtw8TAAAAAM_f6XwYRs9BEqANXkTLetOU-Tey"></div>-->
+							</div>
+							<div class="form-group">
 								<div id="result"></div>
 							</div>
+							
+							
 							<div class="form-group">
 							<input type="submit" value="Sign Up" Class="btn btn-default">
 							</div>
@@ -150,6 +153,7 @@ if($user_ok == true){
 			}
 		</script>
 		<script src="js/functions.js"></script>
+		<script src='https://www.google.com/recaptcha/api.js?hl=es'></script>
 		
   </body>
 </html>

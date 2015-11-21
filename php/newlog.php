@@ -6,7 +6,7 @@ $fecha = $_POST['fecha'];
 if(!empty($fecha)){
 	
 	$test_arr = explode('/', $fecha);
-  if (checkdate($test_arr[0], $test_arr[1], $test_arr[2])) {
+  if (checkdate($test_arr[1], $test_arr[0], $test_arr[2])) {
 		
 		$horas = $_POST['horas'];
 		$minutos = $_POST['minutos'];
@@ -38,17 +38,17 @@ if(!empty($fecha)){
 
 		}
 		else {
-			echo "tiempo es obligatorio";
+			echo "<p class='text-danger text-center'>Debes colocar la duracion de tu entrenamiento.<p>";
 			exit;
 		}
 	}
 	else {
-		echo "fecha en formato incorrecto";
+		echo "<p class='text-danger text-center'>Fecha en formato incorrecto.<p>";
 		exit;
 	} 
 }
 else{
-	echo "fecha es obligatorio";
+	echo "<p class='text-danger text-center'>La fecha es obligatoria.<p>";
 	exit;
 }
 	
@@ -56,15 +56,15 @@ else{
     
     //codigo para insertar las variables a la base de datos. el campo de 'id' siempre se pone NULL porque esta en A_I. la fecha se cambia del formato de input al formato de mysql. si el formulario los permite los valores vacios se agregan como NULL.
 $input = "INSERT INTO runlog (run_id, user_id, run_date, distance, time, pace, bpm, run_type, log_date)
-VALUES (NULL, '".$log_id."', STR_TO_DATE('$fecha', '%m/%d/%Y'), $distancia, $tiempo, $ritmo, $ppm, $entr, now());";
+VALUES (NULL, '".$log_id."', STR_TO_DATE('$fecha', '%d/%m/%Y'), $distancia, $tiempo, $ritmo, $ppm, $entr, now());";
 
 if(mysqli_query($conn, $input)){
-	echo "<br>registro con exito";
+	echo "<br>Registro con exito";
 	exit;
 }
 
 else {
-	echo "<br>registro fallo";
+	echo "<br>Registro fallo";
 	echo $input;
 	exit;
 }

@@ -61,7 +61,8 @@ h1,h2,h3{
 	background: url(img/run2.jpg);
 	background-size: 100%;
 	background-repeat: no-repeat;
-	background-position: center;
+	background-position: bottom;
+	min-height: 550px;
 	margin-bottom: 0px;
 }
 
@@ -128,15 +129,17 @@ footer{
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
+	min-height: 550px;
 }
 .texto-blanco {
 	color: whitesmoke;
 }
 .img-holder-2 {
-	background: url(img/nature4.jpg);
+	background: url(img/nature9.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
-	background-position: center;
+	background-position: bottom;
+	min-height: 550px;
 }
 
 .img-holder-3 {
@@ -144,6 +147,7 @@ footer{
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
+	min-height: 550px;
 }
 
 .text-box {
@@ -152,7 +156,7 @@ footer{
 }
 
 .main-color {
-	color: #ED3A34;
+	color: #ED3A34 !important;
 }
 
 

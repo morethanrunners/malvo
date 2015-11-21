@@ -41,7 +41,7 @@ if ($num_rows > 0){
 		
 		//convierte la fecha de mysql a "m/d/y" y la almacena la fecha en una variable
     $strtotime = strtotime($row["run_date"]);
-		$fechadisplayformat = date ("m/d/y", $strtotime);
+		$fechadisplayformat = date ("d/m/y", $strtotime);
 		
     //muestra la fecha y distancia
     print "<tr id='$run_id'><td>" .$fechadisplayformat. '</td><td>' .$distancia_km. " km";
@@ -64,8 +64,31 @@ if ($num_rows > 0){
     }
     
     //muestra las ppm
-    print "<td>" .$ppm. "</td><td>" .$entr. "</td><td><button class='fa fa-trash-o' onclick='deleteLog();'><button class='fa fa-pencil'></td></tr>";
+    print "<td>" .$ppm. "</td><td>" .$entr. "</td><td><button class='fa fa-trash-o' data-toggle='modal' data-target='#myModal".$run_id."'><button class='fa fa-pencil'></td></tr>";
+		print "<div class='modal fade' id='myModal".$run_id."' tabindex='-1' role='dialog' aria-labelledby='myModalLabel'>
+			<div class='modal-dialog' role='document'>
+				<div class='modal-content'><div class='modal-header'>
+					<button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+						<span aria-hidden='true'>&times;</span></button>
+							<h4 class='modal-title text-center' id='myModalLabel".$run_id."'>Borrar registro</h4>
+				</div>
+				<div class='modal-body'>
+					<p class='text-center strong'>Estas seguro de querer borrar este registro. Una vez borredo esta data no puede ser recuperada.</p>
+				</div>
+				<div class='modal-footer'>
+					<div class='col-md-6 text-left'>
+						<button type='button' class='btn btn-primary' onclick='deleteRow(".$run_id.");deletelog(".$run_id.");' data-toggle='modal' data-dismiss='modal' data-target='#deleteModal'>Confirmar</button>
+					</div>
+					<div class='col-md-6 text-rigth'>
+						<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>";
 }
 	
  }
 ?>
+
+<!--		/Modal-->
