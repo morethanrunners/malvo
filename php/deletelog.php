@@ -5,16 +5,16 @@ if(isset($_POST['id'])) {
 	$id = mysqli_real_escape_string($conn, $_POST['id']);
 	$sql = "DELETE FROM runlog WHERE run_id='".$id."'";
 	if(mysqli_query($conn, $sql)) {
-		echo "Se borro 1 registro";
+		echo "<p class='text-center'>Se borro 1 registro</p>";
 		exit;
 	}
 	else {
-		echo "No se borro nada, algo salio mal";
+		echo "<p>No se borro nada, algo salio mal</p>";
 		exit;
 	}
 }
 else {
-	echo "Algo salio terriblemnete mal";
+	echo "<p>Algo salio terriblemnete mal</p>";
 	exit;
 }
 

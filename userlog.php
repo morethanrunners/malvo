@@ -174,39 +174,44 @@ Con la logica anterior si el ususario cambia algo en la barra de direcciones ser
 			
 <!--			/forms-->
     </div>
-<!--		Modal-->
-		<?php
-	$select = "SELECT * FROM runlog WHERE user_id='".$log_id."' ORDER BY run_date DESC, run_id DESC LIMIT 7";
-$query_select = mysqli_query($conn, $select);
-
-  //cuenta el numero de rows
-$num_rows = mysqli_num_rows($query_select);
-	
-//si existen rows
-if ($num_rows > 0){
-	while ($row = mysqli_fetch_assoc($query_select)){
-    
-		//transforma las variables tiempo y ritmo a minutos y segundos 
-		$run_id = $row["run_id"];
-	}
-}
-	?>
-		<div class='modal fade' id='deleteModal' tabindex='-1' role='dialog' aria-labelledby='myModalLabel'>
+<!--		Modal para mensaje de borrar reistro-->
+		<div class='modal fade' id='deleteModal' tabindex='-1' role='dialog' aria-labelledby='deleteModalLabel'>
 			<div class='modal-dialog' role='document'>
-				<div class='modal-content'><div class='modal-header'>
-					<button type='button' class='close' data-dismiss='modal' aria-label='Close'>
-						<span aria-hidden='true'>&times;</span></button>
-							<h4 class='modal-title text-center text-success' id='myModalLabel".$run_id."'>Registro Borrado</h4>
-				</div>
-				<div class='modal-footer'>
-					<div class='col-md-12 text-center'>
-						<button type='button' class='btn btn-default' data-dismiss='modal'>Aceptar</button>
+				<div class='modal-content'>
+					<div class='modal-header'>
+						<button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+							<span aria-hidden='true'>&times;</span>
+						</button>
+						<h4 class='modal-title text-center text-success' id='deleteModalLabel'>Registro Borrado</h4>
+					</div>
+					<div class='modal-footer'>
+						<div class='col-md-12 text-center'>
+						<button type='button' class='btn btn-primary' data-dismiss='modal'>Aceptar</button>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 <!--		/Modal-->
+		
+<!--		Modal para mensaje de editar registro-->
+		<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+							<span aria-hidden='true'>&times;</span>
+						</button>
+						<h4 id="edit-resp"></h4>
+					</div>
+					<div class='modal-footer'>
+						<div class='col-md-12 text-center'>
+						<button type='button' class='btn btn-primary' data-dismiss='modal' onclick="logTable();">Aceptar</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 <!--  Espacio para la tabla y gráfica-->
       <div class="col-md-9">
 				
@@ -235,6 +240,7 @@ if ($num_rows > 0){
               <!-- Aqui se genera la tabla con el .js y el .php-->
             </tbody>
           </table> 
+					
 <!--        Boton para ver todo-->
           <div id="test" class="align-center">
             <button type="button" class="btn btn-default" onclick="openNewWindow()" >Ver todos</button>

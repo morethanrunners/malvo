@@ -163,7 +163,6 @@ function deleteRow(rowid) {
  hr.onreadystatechange = function() {
 	  if (hr.readyState === 4 && hr.status === 200) {
 			var return_data = hr.responseText;
-			document.getElementById("test").innerHTML = return_data;
 		}
   }
 	hr.send(vars);
@@ -181,3 +180,29 @@ function toggle(id1, id2, btnId1, btnId2) {
 				btn2.className = "btn btn-default";
 			}
 		}
+
+function editlog(formid) {
+	var hr = new XMLHttpRequest();
+	var url = "http://localhost/~erwinhenriquezviejo/malvo/php/editlog.php";
+	var runid = formid;
+	var fecha = document.getElementById('fecha-edit'+formid).value;
+	var distancia = document.getElementById("distancia-edit"+formid).value;
+	var horas = document.getElementById("horas-edit"+formid).value;
+	var minutos = document.getElementById("minutos-edit"+formid).value;
+	var segundos = document.getElementById("segundos-edit"+formid).value;
+	var ppm = document.getElementById("ppm-edit"+formid).value;
+	var entrenamiento = document.getElementById("entre-edit"+formid).value;
+
+	var vars = "runid="+runid+"&fecha="+fecha+"&distancia="+distancia+"&horas="+horas+"&minutos="+minutos+"&segundos="+segundos+"&ppm="+ppm+"&entrenamiento="+entrenamiento;
+	
+	hr.open("POST", url, true);
+	
+	hr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	hr.onreadystatechange = function() {
+	    if(hr.readyState === 4 && hr.status === 200) {
+		    var return_data = hr.responseText;
+			document.getElementById("edit-resp").innerHTML = return_data;
+	    }
+    }
+	hr.send(vars);
+}
