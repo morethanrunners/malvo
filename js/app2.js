@@ -3,33 +3,30 @@ var app = angular.module("app", ["chart.js"]);
 
 app.controller("BarCtrl", function ($scope, $http) {
   'use strict';
-	$http.get('http://localhost/~erwinhenriquezviejo/malvo/php/chart_data.php').then(function(response) {
+	$http.get('http://localhost/~erwinhenriquezviejo/malvo/php/chart_data_dist.php').then(function(response) {
 		$scope.labels = ['1', '2', '3', '4', '5', '6', '7'];
   	$scope.series = ['Distancias (Km)'];
-  	$scope.data = [response.data];
-	}, function(response) {
-		$scope.data = [response.data] || "Request Failed";
+  	$scope.data = [response.data] || "Request Failed";
 	});
-	
 });
 	
 
-app.controller("LineCtrl", function ($scope) {
+app.controller("LineCtrl", function ($scope, $http) {
   'use strict';
-  $scope.labels = ['1', '2', '3', '4', '5', '6', '7'];
-  $scope.series = ['Race times'];
-  $scope.data = [
-    [45, 34, 58, 75, 99, 23, 65]
-  ];
+  $http.get('http://localhost/~erwinhenriquezviejo/malvo/php/chart_data_time.php').then(function(response) {
+		$scope.labels = ['1', '2', '3', '4', '5', '6', '7'];
+  	$scope.series = ['Tiempo en minutos'];
+  	$scope.data = [response.data] || "Request Failed";
+	});
 });
 
-app.controller("PaceCtrl", function ($scope) {
+app.controller("PaceCtrl", function ($scope, $http) {
   'use strict';
-  $scope.labels = ['1', '2', '3', '4', '5', '6', '7'];
-  $scope.series = ['Race paces'];
-  $scope.data = [
-    [6, 6, 8, 4, 5, 7.5, 6.2]
-  ];
+  http.get('http://localhost/~erwinhenriquezviejo/malvo/php/chart_data_pace.php').then(function(response) {
+		$scope.labels = ['1', '2', '3', '4', '5', '6', '7'];
+  	$scope.series = ['Tiempo en '];
+  	$scope.data = [response.data] || "Request Failed";
+	});
 });
 
 app.controller('TabController', function () {

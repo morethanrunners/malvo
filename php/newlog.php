@@ -2,6 +2,9 @@
 include_once("check_login_status.php");
 
 $fecha = $_POST['fecha'];
+$hora = $_POST['hora'];
+$clima = $_POST['clima'];
+$clasi = $_POST['clasi'];
 
 if(!empty($fecha)){
 	
@@ -55,8 +58,8 @@ else{
 
     
     //codigo para insertar las variables a la base de datos. el campo de 'id' siempre se pone NULL porque esta en A_I. la fecha se cambia del formato de input al formato de mysql. si el formulario los permite los valores vacios se agregan como NULL.
-$input = "INSERT INTO runlog (run_id, user_id, run_date, distance, time, pace, bpm, run_type, log_date)
-VALUES (NULL, '".$log_id."', STR_TO_DATE('$fecha', '%d/%m/%Y'), $distancia, $tiempo, $ritmo, $ppm, $entr, now());";
+$input = "INSERT INTO runlog (run_id, user_id, run_date, distance, time, pace, bpm, run_type, log_date, run_time, clima, score)
+VALUES (NULL, '".$log_id."', STR_TO_DATE('$fecha', '%d/%m/%Y'), $distancia, $tiempo, $ritmo, $ppm, $entr, now(), $hora, $clima, $clasi);";
 
 if(mysqli_query($conn, $input)){
 	echo "<p class='text-center text-success'>Registro con exito</p>";

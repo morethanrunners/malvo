@@ -1,7 +1,7 @@
 <?php
 include_once('check_login_status.php');
 
-$select = "SELECT * FROM runlog WHERE user_id='".$log_id."' ORDER BY run_date DESC, run_id DESC LIMIT 7";
+$select = "SELECT * FROM runlog WHERE user_id='".$log_id."' ORDER BY run_date DESC, run_id DESC LIMIT 10";
 $query_select = mysqli_query($conn, $select);
 
   //cuenta el numero de rows
@@ -35,6 +35,9 @@ if ($num_rows > 0){
 			}
 		$ppm = $row["bpm"];
 		$entr = $row["run_type"];
+		$hora = $row["run_time"];
+		$clima = $row["clima"];
+		$clasi = $row["clasi"];
 		
 		//transforma la distancia de m a km para mostrarla en la tabala la guarda en un avariable
      $distancia_km = $row["distance"] / 1000;
@@ -64,7 +67,7 @@ if ($num_rows > 0){
     }
     
     //muestra las ppm
-    print "<td>" .$ppm. "</td><td>" .$entr. "</td><td><button class='fa fa-trash-o' data-toggle='modal' data-target='#deleteModal".$run_id."'><button class='fa fa-pencil' data-toggle='modal' data-target='#editModal".$run_id."'></td></tr>";
+    print "<td>".$ppm."</td><td>".$entr."</td><td><button class='fa fa-trash-o' data-toggle='modal' data-target='#deleteModal".$run_id."'><button class='fa fa-pencil' data-toggle='modal' data-target='#editModal".$run_id."'></td></tr>";
 		
 		/*En esta seccion se imprimen los modales de cada boton de delete*/
 		print "<div class='modal fade' id='deleteModal".$run_id."' tabindex='-1' role='dialog' aria-labelledby='deleteModalLabel".$run_id."'>
@@ -108,9 +111,43 @@ if ($num_rows > 0){
 							<input type='text' name='fecha' id='fecha-edit".$run_id."' class='form-control' placeholder='dd/mm/aa' value='".$fechadisplayformat."' aria-describedby='date' required>
             </div>
         </div>
-          
+				
+				<div class='row'>
+					<!--Hora-->
+					<div class='form-group col-md-6 p-right-5'>
+						<h5>Hora</h5>
+							<div class='input-group'>
+								<span class='input-group-addon custom-padding'><span><i class='fa fa-clock-o'></i></span></span>
+								<select name='hora' id='hora".$run_id."' class='form-control' aria-describedby='time'>
+									<option selected disabled hidden='hidden' value=''>-</option>
+									<option value='1'>Amanecer</option>
+									<option value='2'>Mañana</option>
+									<option value='3'>Tarde</option>
+									<option value='4'>Noche</option>
+								</select>
+							</div>
+					</div>
+
+					<!--Clima-->
+					<div class='form-group col-md-6 p-left-5'>
+						<h5>Clima</h5>
+							<div class='input-group'>
+								<span class='input-group-addon custom-padding'><span><i class='fa fa-sun-o'></i></span></span>
+								<select name='clima' id='clima".$run_id."' class='form-control' aria-describedby='clima'>
+									<option selected disabled hidden='hidden' value=''>-</option>
+									<option value='1'>Despejado</option>
+									<option value='2'>Parcialmente Nublado</option>
+									<option value='3'>Nublado</option>
+									<option value='4'>Lluvia</option>
+									<option value='5'>Nieve</option>
+								</select>
+							</div>
+					</div>
+				</div>
+				
+				<div class='row'>
 <!--Distancia-->  
-				<div class='form-group'>
+				<div class='form-group col-md-6 p-right-5'>
 					<h5>Distancia</h5>
 					<div class='input-group'>
 						<span class='input-group-addon custom-padding'><span class='glyphicon glyphicon-road'></span></span>
@@ -119,7 +156,7 @@ if ($num_rows > 0){
 				</div>
           
 <!--Tiempo-->
-				<div class='form-group'>
+				<div class='form-group col-md-6 p-left-5'>
 					<h5>Tiempo</h5>
 					<div class='input-group'>
 						<span class='input-group-addon custom-padding'><span class='glyphicon glyphicon-time'></span></span>
@@ -130,7 +167,7 @@ if ($num_rows > 0){
 						<input type='text' id='segundos-edit".$run_id."' name='segundos' class='form-control' placeholder='Sec' value='".$segundos."'>
 					</div>
 				</div>
-
+</div>
 <!--PPM-->
 				<div class='form-group'>
 					<h5>PPM</h5>
@@ -147,6 +184,28 @@ if ($num_rows > 0){
 							<input type='text' id='entre-edit".$run_id."' name='entrenamiento' class='form-control' placeholder='Type' value='".$entr."' aria-describedby='dist'>
             </div>
           </div>
+
+<!--				Clasificacion-->
+				<div class='form-group'>
+					<h5>Clacificacion</h5>
+          	<div class='input-group'>
+            	<span class='input-group-addon custom-padding'><span><i class='fa fa-star'></i></span></span>
+							<select id='clasi".$run_id."' name='clasificacion' class='form-control'>
+								<option selected disabled hidden='hidden' value=''>-</option>
+								<option>1</option>
+  							<option>2</option>
+  							<option>3</option>
+  							<option>4</option>
+  							<option>5</option>
+								<option>6</option>
+								<option>7</option>
+								<option>8</option>
+								<option>9</option>
+								<option>10</option>
+</select>
+            </div>
+        </div>
+				
 			 </form>
       </div>
       <div class='modal-footer'>
@@ -156,7 +215,7 @@ if ($num_rows > 0){
 				<div class='col-md-6 text-rigth'>
 					<button type='button' class='btn btn-primary' onclick='editlog(".$run_id.")' data-toggle='modal' data-dismiss='modal' data-target='#editModal'>Guardar cambios</button>
 				</div>	
-      </div>
+      </div>	
     </div>
   </div>
 </div>";

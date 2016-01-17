@@ -79,8 +79,6 @@ Primary color
 	height: 240px;
 }
 
-
-
 .user-area {
 	height: calc(100vh - 50px);
 	min-height: 500px !important;
@@ -89,4 +87,57 @@ Primary color
 
 .back-head {
 	height: 50px;
+}
+
+h5 {
+	margin-top: 0px !important;
+	margin-bottom: 5px !important;
+}
+
+.no-margin {
+	margin-bottom: 0px !important;
+}
+
+.padding15 {
+	padding-bottom: 15px;
+	padding-top: 15px;
+}
+
+.p-right-5 {
+	padding-right: 5px; 
+}
+
+.p-left-5 {
+	padding-left: 5px;
+}
+
+.botones-nav {
+	padding-bottom: 15px;
+}
+
+
+
+.espacio10 {
+	margin-bottom: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 10px;
+}
+
+.p-top-10 {
+	padding-top: 10px;
+}
+
+.dash-border {
+	border-style: dashed;
+}
+
+.section-head {
+	padding-left: 20px;
+	color: darkgray;
+	font-size: 30px;
+}
+
+.list-default {
+	list-style: none;
 }

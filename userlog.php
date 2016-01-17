@@ -101,37 +101,71 @@ Con la logica anterior si el ususario cambia algo en la barra de direcciones ser
 		<div class="col-md-3">
 			
 <!--			Botnes para cambiar los formularios-->
-			<div class="botones-nav text-center">
-				<button id="btn-reg-rapido" type="button" class="btn btn-primary" onclick="toggle('reg-rapido', 'reg-completo', 'btn-reg-rapido', 'btn-reg-completo');">Registro rapido</button>
-				<button id="btn-reg-completo" type="button" class="btn btn-default" onclick="toggle('reg-completo', 'reg-rapido', 'btn-reg-completo', 'btn-reg-rapido');">Registro completo</button>
+			<div class="text-center">
+				<h4 class="text-info">Nuevo registro <small><a href="#"><span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="modal" data-target="#infoModal"></span></a></small></h4>
 			</div>
 			
 <!--			Formulario de registro rapido-->
-			<form id="reg-rapido">
-     
-<!--Fecha-->
-				<div class="form-group">
-					<h5>Fecha</h5>
+			<form id="reg-rapido" onsubmit="logTable();">
+			
+<!--				Doble row imput-->
+				<div class="row">
+
+<!--				Fecha-->
+					<div class="form-group col-md-6 p-right-5">
+						<h5>Fecha</h5>
+          		<div class="input-group">
+            		<span class="input-group-addon custom-padding"><span class="glyphicon glyphicon-calendar"></span></span>
+								<input type="text" name="fecha" id="fecha" class="form-control" placeholder="dd/mm/aa" aria-describedby="date">
+            	</div>
+        	</div>
+				
+<!--				Hora-->
+				<div class="form-group col-md-6 p-left-5">
+					<h5>Hora</h5>
           	<div class="input-group">
-            	<span class="input-group-addon custom-padding"><span class="glyphicon glyphicon-calendar"></span></span>
-							<input type="text" name="fecha" id="fecha" class="form-control" placeholder="dd/mm/aa" aria-describedby="date" required>
+            	<span class="input-group-addon custom-padding"><span><i class="fa fa-clock-o"></i></span></span>
+							<select name="hora" id="hora" class="form-control" aria-describedby="time">
+								<option selected disabled hidden="hidden" value="">-</option>
+								<option value="1">Amanecer</option>
+								<option value="2">Mañana</option>
+								<option value="3">Tarde</option>
+								<option value="4">Noche</option>
+							</select>
             </div>
-        </div>
-          
-<!--Distancia-->  
+        	</div>
+				</div>
+				
+<!--				Clima-->
+				<div class="form-group">
+					<h5>Clima</h5>
+          	<div class="input-group">
+            	<span class="input-group-addon custom-padding"><span><i class="fa fa-sun-o"></i></span></span>
+							<select id="clima" name="clima" class="form-control">
+								<option selected disabled hidden="hidden" value="">-</option>
+								<option value="1">Despejado</option>
+  							<option value="2">Parcialmente Nublado</option>
+  							<option value="3">Nublado</option>
+  							<option value="4">Lluvia</option>
+  							<option value="5">Nieve</option>
+</select>
+            </div>
+        </div>		
+				
+<!--				Distancia  -->
 				<div class="form-group">
 					<h5>Distancia</h5>
 					<div class="input-group">
 						<span class="input-group-addon custom-padding"><span class="glyphicon glyphicon-road"></span></span>
-						<input type="number" id="distancia" name="distancia" step="0.1" class="form-control" placeholder="in Km" aria-describedby="dist" required>
+						<input type="number" id="distancia" name="distancia" step="0.1" class="form-control" placeholder="en Km" aria-describedby="dist" required>
 					</div>
 				</div>
-          
-<!--Tiempo-->
+				
+<!--				Tiempo-->
 				<div class="form-group">
 					<h5>Tiempo</h5>
 					<div class="input-group">
-						<span class="input-group-addon custom-padding"><span class="glyphicon glyphicon-time"></span></span>
+						<span class="input-group-addon custom-padding"><span><i class="fa fa-tachometer"></i></span></span>
 						<input type="text" id="horas" name="horas" class="form-control" placeholder="Hrs" aria-describedby="dist">
 	<span class="input-group-addon timeSpace" id="time">:</span>
 	<input type="text" id="minutos" name="minutos" class="form-control" placeholder="Min" aria-describedby="dist">
@@ -139,8 +173,8 @@ Con la logica anterior si el ususario cambia algo en la barra de direcciones ser
 						<input type="text" id="segundos" name="segundos" class="form-control" placeholder="Sec">
 					</div>
 				</div>
-
-<!--PPM-->
+				
+<!--				PPM-->
 				<div class="form-group">
 					<h5>PPM</h5>
 					<div class="input-group"><span class="input-group-addon custom-padding"><span class="glyphicon glyphicon-heart"></span></span>
@@ -148,32 +182,110 @@ Con la logica anterior si el ususario cambia algo en la barra de direcciones ser
 					</div>
 				</div>
 
-<!--          Tipo-->
-          
+<!--        Tipo-->
           <div class="form-group">
             <h5>Entrenamiento</h5>
             <div class="input-group"><span class="input-group-addon custom-padding" id="pace"><span class="glyphicon glyphicon-flag"></span></span>
 							<input type="text" id="entrenamiento" name="entrenamiento" class="form-control" placeholder="Type" aria-describedby="dist">
             </div>
           </div>
-        
+				
+<!--				Clasificacion-->
+				<div class="form-group">
+					<h5>Clacificacion</h5>
+          	<div class="input-group">
+            	<span class="input-group-addon custom-padding"><span><i class="fa fa-star"></i></span></span>
+							<select id="clasi" name="clasificacion" class="form-control">
+								<option selected disabled hidden="hidden" value="">-</option>
+								<option>1</option>
+  							<option>2</option>
+  							<option>3</option>
+  							<option>4</option>
+  							<option>5</option>
+								<option>6</option>
+								<option>7</option>
+								<option>8</option>
+								<option>9</option>
+								<option>10</option>
+</select>
+            </div>
+        </div>
+				
 <!--        Boton Submit-->
           <div class="align-center">
-            <input type="submit" name="running_log" value="Agregar" class="btn btn-default espacio25" onclick="newLog();logTable();reset();">
+            <input type="submit" name="running_log" value="Agregar" class="btn btn-default" onclick="newLog();logTable();reset();">
           </div>
 			 </form>
-			
-<!--			Formulario de registro completo-->
-			<form id="reg-completo" style="display:none">
-				<p>***NOTA***</p>
-				<p>En esta area se colocora un registro mas completo para poner mas informacion.</p>
-			</form>
 			
 <!--			Espacio para repsuetsa del formulario-->
 		<div id="runlog"></div>
 			
 <!--			/forms-->
     </div>
+		
+<!--		Modal de Info-->
+		<div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title text-center" id="myModalLabel">Como llenar un registro</h4>
+      </div>
+      <div class="modal-body">
+        Llenar una entrada al registro es facil. Solo debes colocar la informacion de tu entrenamiento y guardar la data. Es importante que llenes tantos campos como puedas de ese modo la informacion de tus entrenamientos sera mas completa y podras aprender mas de tus entrenamientos. En la tabla podras ver los datos mas importantes. Para mas informacion puedes hacer click en <button class="btn btn-default btn-sm">Ver todos</button><br>
+				<table class="table">
+					<thead>
+						<th></th>
+						<th></th>
+					</thead>
+					<tbody>
+						<tr>
+							<td><b>Fecha:</b></td>
+							<td>La fecha de tu entrenamiento.</td>
+						</tr>
+						<tr>
+							<td><b>Hora:</b></td>
+							<td>La hora del dia en la que entrenas puede afectar tu entrenamiento. Selecciona en que hora del dia entrenaste y ve cuando rindes mas.</td>
+						</tr>
+						<tr>
+							<td><b>Clima:</b></td>
+							<td>El clima es un factor determinante en el resultado de tu entrenamiento. Seleccona el clima correcto para entrenar mejor.</td>
+						</tr>
+						<tr>
+							<td><b>Distancia:</b></td>
+							<td>Cuanto recorriste. Nosotros medimos en Kilometros. Si mides en otra unidad recuerda hacer la conversion antes de hacer el registro.</td>
+						</tr>
+						<tr>
+							<td><b>Tiempo:</b></td>
+							<td>Cuanto tiempo dura tu entrenamiento. Aqui puedes registrar la duracion total de tu entrenamiento en horas, minutos y segundos <i>(Pronto una herramienta para intervalos).</i> Usaremos este tiempo para calcular tu ritmo de carrera promedio </td>
+						</tr>
+						<tr>
+							<td><b>PPM</b></td>
+							<td>Pulsaciones Por Minutos. Te ayuda a medir la intensidad de tu entrenamiento. Si no tienes una banda cardiaca recuerda tomarte el pulso justo despues de terminar de correr tan pronto como puedas.</td>
+						</tr>
+						<tr>
+							<td><b>Entrenamiento:</b></td>
+							<td>Registra que tipo de entrenamiento o carrera hiciste. Ya sea una sesion de intervalos, 'Fartleks' o un dia de recuperacion. Tus entrenamientos son diferentes y su rendimiento tambien. Tienes flexibilidad para colocar tus entrenamientos favoritos, pero recuerda ser consistente en los nombres que colocas para mejor registro.</td>
+						</tr>
+						<tr>
+							<td><b>Clasificacion:</b></td>
+							<td>Del 0 al 10. califica tu carrera para que recuerdes buenos momentos y malos tambien. con una calificacion subjetiva puedes analizar patrones y saber como entrenar y sentirte mejor.</td>
+						</tr>
+					</tbody>
+				</table>
+      </div>
+      <div class="modal-footer">
+        
+<!--				Este boton lleva a mas informacion-->
+				<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Mas informacion</button>
+				
+<!--				Este btn regresa al formulario-->
+        <button type="button" class="btn btn-primary">Entendido</button>
+      </div>
+    </div>
+  </div>
+</div>
+		
 <!--		Modal para mensaje de borrar reistro-->
 		<div class='modal fade' id='deleteModal' tabindex='-1' role='dialog' aria-labelledby='deleteModalLabel'>
 			<div class='modal-dialog' role='document'>
@@ -186,7 +298,7 @@ Con la logica anterior si el ususario cambia algo en la barra de direcciones ser
 					</div>
 					<div class='modal-footer'>
 						<div class='col-md-12 text-center'>
-						<button type='button' class='btn btn-primary' data-dismiss='modal'>Aceptar</button>
+						<button type='button' class='btn btn-primary' data-dismiss='modal' onclick="logTable();">Aceptar</button>
 						</div>
 					</div>
 				</div>
@@ -212,6 +324,8 @@ Con la logica anterior si el ususario cambia algo en la barra de direcciones ser
 				</div>
 			</div>
 		</div>
+<!--		/modal-->
+		
 <!--  Espacio para la tabla y gráfica-->
       <div class="col-md-9">
 				
@@ -222,15 +336,24 @@ Con la logica anterior si el ususario cambia algo en la barra de direcciones ser
 				</div>
 <!--       	Tabla-->
 				<div id="tabla">
-        	<table class="table table-hover">
+					<div class="table-toolbar">
+						
+<!--
+						<div class="pull-right">
+							<button class="btn btn-default">10</button>
+						</div>
+-->
+						
+					</div>
+        	<table class="table table-hover table-striped">
             <thead>
               <tr>
-                <th>Date</th>
+								<th>Date <span class="caret"></span></th>
                 <th>Distance
                   <span class="caret"></span></th>
                   
                 <th>Time <span class="caret"></span></th>
-                <th>Pace <span class="caret"></span></th>
+                <th>Avg Pace <span class="caret"></span></th>
                 <th>BPM <span class="caret"></span></th>
                 <th>Type <span class="caret"></span></th>
 								<th></th>
@@ -288,4 +411,12 @@ Con la logica anterior si el ususario cambia algo en la barra de direcciones ser
 	<!--Personal .js files-->
   <script src="js/app2.js"></script>
   <script src="js/functions.js"></script>
+	<script>
+		$(function () {
+  $('[data-toggle="popover"]').popover()
+})
+		$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+	</script>
 </html>

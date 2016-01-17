@@ -112,8 +112,11 @@ function newLog() {
 	var segundos = document.getElementById("segundos").value;
 	var ppm = document.getElementById("ppm").value;
 	var entrenamiento = document.getElementById("entrenamiento").value;
-
-	var vars = "fecha="+fecha+"&distancia="+distancia+"&horas="+horas+"&minutos="+minutos+"&segundos="+segundos+"&ppm="+ppm+"&entrenamiento="+entrenamiento;
+	var hora = document.getElementById("hora").value;
+	var clima = document.getElementById("clima").value;
+	var clasi = document.getElementById("clasi").value;
+	
+	var vars = "fecha="+fecha+"&distancia="+distancia+"&horas="+horas+"&minutos="+minutos+"&segundos="+segundos+"&ppm="+ppm+"&entrenamiento="+entrenamiento+"&hora="+hora+"&clima="+clima+"&clasi="+clasi;
 	
 	hr.open("POST", url, true);
 	
@@ -192,8 +195,11 @@ function editlog(formid) {
 	var segundos = document.getElementById("segundos-edit"+formid).value;
 	var ppm = document.getElementById("ppm-edit"+formid).value;
 	var entrenamiento = document.getElementById("entre-edit"+formid).value;
+	var hora = document.getElementById("hora"+formid).value;
+	var clima = document.getElementById("clima"+formid).value;
+	var clasi = document.getElementById("clasi"+formid).value;
 
-	var vars = "runid="+runid+"&fecha="+fecha+"&distancia="+distancia+"&horas="+horas+"&minutos="+minutos+"&segundos="+segundos+"&ppm="+ppm+"&entrenamiento="+entrenamiento;
+	var vars = "runid="+runid+"&fecha="+fecha+"&distancia="+distancia+"&horas="+horas+"&minutos="+minutos+"&segundos="+segundos+"&ppm="+ppm+"&entrenamiento="+entrenamiento+"&hora="+hora+"&clima="+clima+"&clasi="+clasi;
 	
 	hr.open("POST", url, true);
 	
