@@ -27,6 +27,7 @@ Con la logica anterior si el ususario cambi algo en la barra de direcciones sera
 */
 //seccion para hacer las variables que se usaran luego
 
+//este codigo nos da el id del usuario
 $sql = "SELECT * FROM users WHERE username='".$user."'";
 $query = mysqli_query($conn, $sql);
 $num_row = mysqli_num_rows($query);
@@ -213,11 +214,25 @@ else {
 							</ul>
 						</div>
 						<div class="col-md-6">
-							<button class="btn btn-primary">+track</button>
-							<div class="dash-border">
-								<ul>
-									<li>Agregar tu propio record para seguir</li>
+							
+							<div class="dropdown">
+								<button id="track-1" class="btn btn-primary" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									Agregar Record
+									<span class="caret"></span>
+								</button>
+								<ul id="ul-records" class="dropdown-menu" aria-labelledby="track-1">
+									<li><input id="r-racha" type="checkbox" class="r-checkbox" />Racha de entrenamientos</li>
+									<li><input id="r-2" type="checkbox" class="r-checkbox" />Otro record</li>
+									<li><input id="r-3" type="checkbox" class="r-checkbox" />Otro record</li>
 								</ul>
+							</div>
+							<div id="area-1" class="dash-border">
+								<ul>
+									<li>Record personalizados</li>
+								</ul>
+							</div>
+							<div id="area-2" style="display: none">
+								<p>Area que muestra los record personales</p>
 							</div>
 						</div>
 					</div>
@@ -266,6 +281,50 @@ else {
 				btn.className = "btn btn-default";
 			}
 		}
+	</script>
+	<script>
+		
+//		JQUERY para cambiar la visibilidad de 2 DIVs basado en la accion de 1 solo checkbox
+		
+/*		$("#r-racha").change(function(){
+			var ischecked=$(this).is(':checked');
+			if(ischecked){
+				$("#area-2").fadeIn(200);
+				$("#area-1").fadeOut(200);
+			}
+			else{
+      	$("#area-2").fadeOut(200);
+				$("#area-1").fadeIn(200);
+			}
+    
+});*/
+
+//		JS para cambiar el display de 2 DIVs basado en el checkbox. solo se puede utilizar si es solo un checbox
+		
+/*
+function toggle2(id1, id2, cb) {
+	var div1 = document.getElementById(id1);
+	var div2 = document.getElementById(id2);
+	if(cb.checked == true) {
+		div1.style.display = "none";
+		div2.style.display = "block";
+	}
+	else {
+		div1.style.display = "block";
+		div2.style.display = "none";
+	}
+}
+*/
+		
+//		Jquery
+		var tog = $("#area-2").hide();
+		var tog2 = $("#area-1").hide();
+ $('#ul-records .r-checkbox').change(function () {                
+   $(tog).toggle($('.r-checkbox:checked').length > 0);
+ $(tog2).toggle($('.r-checkbox:checked').length == 0);
+ }).change();
+		
+		
 	</script>
 	
 </html>
